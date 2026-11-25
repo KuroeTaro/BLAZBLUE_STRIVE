@@ -87,7 +87,8 @@ function order_load_char_select_scene_UI_movie_cover(load_order)
         [1] = function()
             image_sprite_sheet_UI_char_select_scene_movie_cover =
             common_sprite_sheet_load(
-                "asset/char_select_scene/texture/movie_cover.json",love.graphics.newImage(ASSET_DATA[3]["movie_cover"])
+                "asset/char_select_scene/texture/movie_cover.json",
+                love.graphics.newImage(ASSET_DATA[3]["movie_cover"])
             )
         end
     }

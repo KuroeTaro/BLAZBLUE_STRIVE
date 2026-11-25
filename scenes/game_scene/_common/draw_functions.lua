@@ -534,11 +534,11 @@ function draw_VFX_game_scene_overdrive_badge_partical(
     love.graphics.setBlendMode("alpha")
     love.graphics.setShader()
 end
--- projectile:burst shockwave —— 程序化冲击波飞行道具的全屏绘制入口
--- 和 overdrive badge 的冲击波同一套坐标约定:shader 内部把屏幕像素换算成
--- 1600x900 设计坐标,center / radius 都按设计像素送,所以分辨率变化不用重算。
--- 数值全部来自 BURST_SHOCKWAVE_PROJECTILE_CONFIG。
 function draw_projectile_game_scene_burst_shockwave(shader,obj_projectile,frame,opacity)
+    -- projectile:burst shockwave —— 程序化冲击波飞行道具的全屏绘制入口
+    -- 和 overdrive badge 的冲击波同一套坐标约定:shader 内部把屏幕像素换算成
+    -- 1600x900 设计坐标,center / radius 都按设计像素送,所以分辨率变化不用重算。
+    -- 数值全部来自 BURST_SHOCKWAVE_PROJECTILE_CONFIG。
     local config = BURST_SHOCKWAVE_PROJECTILE_CONFIG
     local obj_camera = obj_stage_game_scene_camera
     local width,height = love.graphics.getDimensions()
@@ -569,11 +569,11 @@ function draw_projectile_game_scene_burst_shockwave(shader,obj_projectile,frame,
     love.graphics.setShader()
     love.graphics.setBlendMode("alpha")
 end
--- VFX:FD 屏障(FD_bubble 球罩 + block_FD 命中环,同一个 shader 画)
--- 半径 / 环位置按设计像素送,和 overdrive / burst shockwave 同一套坐标约定。
--- opacity:整体透明度(命中时的包络 / 常驻时的渐入);
--- 命中环的半径与峰值由 VFX 每帧从 8 帧表插值好放在 obj_VFX 上,这里直接送。
 function draw_VFX_game_scene_char_FD_block(shader,obj_VFX,opacity)
+    -- VFX:FD 屏障(FD_bubble 球罩 + block_FD 命中环,同一个 shader 画)
+    -- 半径 / 环位置按设计像素送,和 overdrive / burst shockwave 同一套坐标约定。
+    -- opacity:整体透明度(命中时的包络 / 常驻时的渐入);
+    -- 命中环的半径与峰值由 VFX 每帧从 8 帧表插值好放在 obj_VFX 上,这里直接送。
     if opacity <= 0.0 then
         return
     end

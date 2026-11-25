@@ -185,19 +185,22 @@ function order_load_game_scene_UI_act(load_order)
         [2] = function()
             image_sprite_sheet_table_announcer_game_scene_act_number[1] =
             common_sprite_sheet_load(
-                "asset/game_scene/common/texture/act_1.json",love.graphics.newImage(ASSET_DATA[3]["act_1_sprite_batch"])
+                "asset/game_scene/common/texture/act_1.json",
+                love.graphics.newImage(ASSET_DATA[3]["act_1_sprite_batch"])
             )
         end,
         [3] = function()
             image_sprite_sheet_table_announcer_game_scene_act_number[2] =
             common_sprite_sheet_load(
-                "asset/game_scene/common/texture/act_2.json",love.graphics.newImage(ASSET_DATA[3]["act_2_sprite_batch"])
+                "asset/game_scene/common/texture/act_2.json",
+                love.graphics.newImage(ASSET_DATA[3]["act_2_sprite_batch"])
             )
         end,
         [4] = function()
             image_sprite_sheet_table_announcer_game_scene_act_number[3] =
             common_sprite_sheet_load(
-                "asset/game_scene/common/texture/act_3.json",love.graphics.newImage(ASSET_DATA[3]["act_3_sprite_batch"])
+                "asset/game_scene/common/texture/act_3.json",
+                love.graphics.newImage(ASSET_DATA[3]["act_3_sprite_batch"])
             )
         end
     }
@@ -208,7 +211,8 @@ function order_load_game_scene_UI_HUD(load_order)
     local switch =
     {
         [1] = function()
-            image_HUD_game_scene_background_gauge = love.graphics.newImage(ASSET_DATA[4]["HUD_background_gauge"])
+            image_HUD_game_scene_background_gauge =
+            love.graphics.newImage(ASSET_DATA[4]["HUD_background_gauge"])
         end,
         [2] = function()
             image_sprite_sheet_HUD_game_scene_common =

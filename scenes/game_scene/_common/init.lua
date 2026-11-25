@@ -55,8 +55,6 @@ function load_game_scene_common_audio()
     )
     update_SFX_VOLUME(audio_SFX_game_scene_common["common_throw_tech"])
 end
--- 公共 shader:每一步建一个,暖机由加载流程排到下一帧(common_shader_new 见 update_general_use_functions/warm_up.lua)
--- 后两个参数是游戏里的画法(混合模式 / 图元),暖机按它画
 function load_game_scene_common_shader(i)
     local switch = {
         -- 场景光晕:全屏 rectangle 画进 canvas
@@ -291,4 +289,15 @@ function preset_game_scene_training()
     )
 end
 function preset_game_scene_match()
+    local char_LP = obj_char_game_scene_char_LP
+    local char_RP = obj_char_game_scene_char_RP
+    obj_UI_game_scene_black_solid[4] = 1
+    char_LP["character_animation"] = char_LP["init_animation_load_function"](char_LP)
+    char_RP["character_animation"] = char_RP["init_animation_load_function"](char_RP)
+    init_character_anim_with(
+        char_LP,char_LP["character_animation"]
+    )
+    init_character_anim_with(
+        char_RP,char_RP["character_animation"]
+    )
 end

@@ -851,11 +851,11 @@ function load_game_scene_texture_LP()
     -- CANVAS
     local width = love.graphics.getWidth()
     local height = love.graphics.getHeight()
+    local quad_image_data = love.image.newImageData(1,1)
     -- 程序化 VFX 用的贴图(_VFX.lua 通过 common_game_scene_get_texture_table 取用)
     -- 尺寸要用 config 的参数,所以 order_load_game_scene_common 里 config 在 canvas 之前加载
     texture_table_game_scene_LP = {}
     -- 6SP_P 诅咒光环用的 1x1 白图:shader 画在它上面,拉伸成所有粒子的包围盒
-    local quad_image_data = love.image.newImageData(1,1)
     quad_image_data:setPixel(0,0,1,1,1,1)
     texture_table_game_scene_LP["6SP_P_arua_quad_image"] = love.graphics.newImage(quad_image_data)
     -- 6SP_P 诅咒光环的粒子数据贴图(rgba32f,宽 = max_particles,高 = 2):代替 uniform 数组

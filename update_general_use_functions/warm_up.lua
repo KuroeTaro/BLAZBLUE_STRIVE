@@ -85,8 +85,8 @@ local function warm_up_draw(drawable_kind)
         love.graphics.draw(warm_up_mesh)
     end
 end
--- order_load 的一步开始:之后 newImage / newCanvas 新建的纹理都登记下来
 function warm_up_record_begin(step_name)
+    -- order_load 的一步开始:之后 newImage / newCanvas 新建的纹理都登记下来
     warm_up_step_name = step_name
     warm_up_texture_list = {}
     warm_up_shader_list = {}
@@ -95,8 +95,8 @@ function warm_up_record_begin(step_name)
     love.graphics.newImage = warm_up_record_image
     love.graphics.newCanvas = warm_up_record_canvas
 end
--- order_load 的一步结束:换回原来的函数,这一步登记的东西排进暖机队列(纹理一项,shader 各一项)
 function warm_up_record_end()
+    -- order_load 的一步结束:换回原来的函数,这一步登记的东西排进暖机队列(纹理一项,shader 各一项)
     love.graphics.newImage = warm_up_new_image
     love.graphics.newCanvas = warm_up_new_canvas
     if #warm_up_texture_list > 0 then
@@ -108,8 +108,8 @@ function warm_up_record_end()
     warm_up_texture_list = nil
     warm_up_shader_list = nil
 end
--- 做暖机队列里的第一项,返回这一项的说明(给加载计时打印用)
 function warm_up_queue_step()
+    -- 做暖机队列里的第一项,返回这一项的说明(给加载计时打印用)
     if warm_up_target_canvas == nil then
         warm_up_target_canvas = love.graphics.newCanvas(8,8)
         warm_up_source_canvas = love.graphics.newCanvas(8,8)

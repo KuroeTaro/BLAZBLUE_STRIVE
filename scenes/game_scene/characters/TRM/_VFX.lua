@@ -826,10 +826,10 @@ function insert_VFX_game_scene_char_TRM_6SP_P_spawn_halo(obj_char)
     end
     table.insert(obj_char["VFX_common_front_table"],obj_VFX)
 end
--- 6SP_P 诅咒光环(shaders/characters/TRM/6SP_P_arua.glsl)
--- 粒子的发射 / 回收 / 绘制见 _character_function.lua 的 character_function_game_scene_TRM_6SP_P_arua_*
--- 参数在 left.lua / right.lua 的 load_game_scene_config_char_LP / RP 里,贴图在 load_game_scene_texture_LP / RP 里
 function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_obj_char)
+    -- 6SP_P 诅咒光环(shaders/characters/TRM/6SP_P_arua.glsl)
+    -- 粒子的发射 / 回收 / 绘制见 _character_function.lua 的 character_function_game_scene_TRM_6SP_P_arua_*
+    -- 参数在 left.lua / right.lua 的 load_game_scene_config_char_LP / RP 里,贴图在 load_game_scene_texture_LP / RP 里
     local obj_VFX = {0,0,0,0.75,0,0,0,0}
     local obj_camera = obj_stage_game_scene_camera
     local hit_side = hit_side_obj_char["player_side"]
@@ -917,7 +917,7 @@ function insert_VFX_game_scene_char_TRM_6SP_P_arua(hit_side_obj_char,hurt_side_o
                 if hurt_side_obj_char["state"] ~= "wallbreak_hit"
                 and hurt_side_obj_char["state"] ~= "wallbreak_hurt" then
                     -- 破墙结束:重新显示,粒子从 0 开始自然发射出来
-                    obj_VFX[4] = 0.75
+                    obj_VFX[4] = 1
                     obj_VFX["state"] = "ease_in_after_wallbreak"
                     -- 破墙后换了场地,旧粒子留在原来的世界坐标没有意义,全部在新位置重新出生
                     obj_VFX["draw_sync"]()

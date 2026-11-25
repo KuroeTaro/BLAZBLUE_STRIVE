@@ -506,7 +506,8 @@ function update_game_scene_training_wallbreak()
         obj_stage_main,anim_stage_game_scene_wallbreak_main
     ) then
         load_game_scene_stage_apply_wallbreak_end_init(
-            obj_stage_main["wallbreak_hit_side_obj_char"],obj_stage_main["wallbreak_hurt_side_obj_char"]
+            obj_stage_main["wallbreak_hit_side_obj_char"],
+            obj_stage_main["wallbreak_hurt_side_obj_char"]
         )
         current_update_block = update_game_scene_training_main
     end
@@ -785,8 +786,9 @@ function update_game_scene_test_and_apply_wallstick_sub(obj_char_a,obj_char_b)
     local obj_stage_main = obj_stage_game_scene_main
     local obj_camera = obj_stage_game_scene_camera
     local obj_wallstick = obj_stage_game_scene_wallstick
-    local wallstick_spwan_anchor_pos =
-        common_game_scene_get_VFX_spawn_anchor(obj_char_a["player_side"])["wallstick_spawn_anchor_pos"]
+    local wallstick_spwan_anchor_pos = common_game_scene_get_VFX_spawn_anchor(
+        obj_char_a["player_side"]
+    )["wallstick_spawn_anchor_pos"]
     local collision_side = 0
     local collision_side_cache = 0
     if obj_char_a["state"] ~= "hurt" and obj_char_a["state"] ~= "hurtstop" then

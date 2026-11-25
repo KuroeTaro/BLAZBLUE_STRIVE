@@ -88,7 +88,7 @@ function common_game_scene_test_and_apply_wallbreak(
         )
     end
 end
--- get
+-- side_get
 function common_game_scene_get_pushbox(side)
     local side_table = {
         ["L"] = obj_pushboxs_data_game_scene_char_LP,
@@ -116,33 +116,6 @@ function common_game_scene_get_VFX_spawn_anchor(side)
         ["R"] = obj_VFX_spawn_anchor_data_game_scene_char_RP
     }
     return side_table[side]
-end
-function common_game_scene_get_FD_block_animation(
-    hit_obj,hurt_obj,block_anim_name,FD_block_anim_name
-)
-    local block_animation = hit_obj[block_anim_name]
-    local FD_block_animation = hit_obj[FD_block_anim_name]
-    if FD_block_animation == nil
-    or FD_block_animation["source_block_animation"] ~= block_animation then
-        FD_block_animation = load_game_scene_anim_char_common_0_ground_FD_block(
-            hurt_obj,block_animation
-        )
-        FD_block_animation["source_block_animation"] = block_animation
-        hit_obj[FD_block_anim_name] = FD_block_animation
-    end
-    return FD_block_animation
-end
--- set
-function common_game_scene_set_FD_block_animation(hit_obj,hurt_obj)
-    local source_block_anim = hurt_obj["character_animation"]
-    local final_block_anim = hurt_obj["character_animation"]
-    if source_block_anim["block_type"] == "normal" then
-        final_block_anim = 
-        load_game_scene_anim_char_common_0_ground_FD_block(
-            hurt_obj,source_block_anim
-        )
-    end
-    hurt_obj["character_animation"] = final_block_anim
 end
 -- overdrive_badge:单张 static 贴图(缩放/透明度由 _VFX.lua 的时间轴重建)
 function common_game_scene_get_overdrive_badge_image_table(side)
@@ -236,6 +209,18 @@ function common_game_scene_get_input_sys_cache_negative_edge_init(side)
         ["R"] = init_input_sys_cache_negative_edge_RP
     }
     return side_table[side]
+end
+-- set
+function common_game_scene_set_FD_block_animation(hit_obj,hurt_obj)
+    local source_block_anim = hurt_obj["character_animation"]
+    local final_block_anim = hurt_obj["character_animation"]
+    if source_block_anim["block_type"] == "normal" then
+        final_block_anim = 
+        load_game_scene_anim_char_common_0_ground_FD_block(
+            hurt_obj,source_block_anim
+        )
+    end
+    hurt_obj["character_animation"] = final_block_anim
 end
 -- input_sys
 function common_game_scene_init_input_sys_state_for_wallbreak(obj_char)

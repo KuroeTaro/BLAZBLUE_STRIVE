@@ -918,13 +918,13 @@ function character_function_game_scene_TRM_shot_sys_at_the_steady_shot_update(
 end
 -- VFX
 -- 6SP_P
--- 诅咒光环(insert_VFX_game_scene_char_TRM_6SP_P_arua 见 _VFX.lua,shader 见 shaders/characters/TRM/6SP_P_arua.glsl)
--- 粒子固定在世界坐标里:按发射频率在受击方当前位置附近出生,之后只在世界里上飘,
--- 角色走开了也留在原地,直到死亡。参数 / 随机数发生器在 obj_VFX["config"] / obj_VFX["6SP_P_arua_RNG"]
--- (来自 config_game_scene_LP / RP),长度类参数以 config["shader"]["unit"] 世界单位为 1.0。
--- 在 (center_x,center_y) 附近给一个粒子分配新的世界坐标出生点
--- particle = {x,y,birth,seed,-,size_mul}
 function character_function_game_scene_TRM_6SP_P_arua_spawn_particle(obj_VFX,particle,birth,center_x,center_y)
+    -- 诅咒光环(insert_VFX_game_scene_char_TRM_6SP_P_arua 见 _VFX.lua,shader 见 shaders/characters/TRM/6SP_P_arua.glsl)
+    -- 粒子固定在世界坐标里:按发射频率在受击方当前位置附近出生,之后只在世界里上飘,
+    -- 角色走开了也留在原地,直到死亡。参数 / 随机数发生器在 obj_VFX["config"] / obj_VFX["6SP_P_arua_RNG"]
+    -- (来自 config_game_scene_LP / RP),长度类参数以 config["shader"]["unit"] 世界单位为 1.0。
+    -- 在 (center_x,center_y) 附近给一个粒子分配新的世界坐标出生点
+    -- particle = {x,y,birth,seed,-,size_mul}
     local config = obj_VFX["config"]
     local RNG = obj_VFX["6SP_P_arua_RNG"]
     local rr = RNG:random()^config["spawn_pow"]
@@ -938,8 +938,8 @@ function character_function_game_scene_TRM_6SP_P_arua_spawn_particle(obj_VFX,par
     particle[5] = 1
     particle[6] = 1 - config["outer_shrink"]*rr
 end
--- 清空并重新开始发射;prewarm 时按稳定状态预先铺满(出生时间按发射频率往前排)
 function character_function_game_scene_TRM_6SP_P_arua_reset_particles(obj_VFX,center_x,center_y)
+    -- 清空并重新开始发射;prewarm 时按稳定状态预先铺满(出生时间按发射频率往前排)
     local config = obj_VFX["config"]
     local life = config["shader"]["life"]
     local rate = config["emit_rate"]
@@ -958,9 +958,9 @@ function character_function_game_scene_TRM_6SP_P_arua_reset_particles(obj_VFX,ce
         end
     end
 end
--- 每 tick:移除寿命到了的粒子,再按发射频率在受击方当前位置发射新粒子
--- dt = 这一 tick 前进了多少序列帧
 function character_function_game_scene_TRM_6SP_P_arua_update_particles(obj_VFX,center_x,center_y,dt)
+    -- 每 tick:移除寿命到了的粒子,再按发射频率在受击方当前位置发射新粒子
+    -- dt = 这一 tick 前进了多少序列帧
     local config = obj_VFX["config"]
     local life = config["shader"]["life"]
     local rate = config["emit_rate"]
@@ -990,9 +990,9 @@ function character_function_game_scene_TRM_6SP_P_arua_update_particles(obj_VFX,c
     end
     obj_VFX["emit_accumulator"] = accumulator
 end
--- 每帧不新建表:粒子数据写进释放方 image_table_VFX 里的数据贴图(同一侧共用,draw 前写入再上传),send 用的 vec2 / 投影用的点都复用 obj_VFX 里的表
--- update 里时间前进后立刻回收寿命到了的粒子,所以这里的粒子全都活着,直接全部画
 function character_function_game_scene_TRM_6SP_P_arua_draw(obj_camera,obj_VFX,shader)
+    -- 每帧不新建表:粒子数据写进释放方 image_table_VFX 里的数据贴图(同一侧共用,draw 前写入再上传),send 用的 vec2 / 投影用的点都复用 obj_VFX 里的表
+    -- update 里时间前进后立刻回收寿命到了的粒子,所以这里的粒子全都活着,直接全部画
     local config = obj_VFX["config"]
     local shader_config = config["shader"]
     local unit = shader_config["unit"]

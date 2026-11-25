@@ -1233,12 +1233,12 @@ function load_game_scene_anim_char_common_0_ground_FD_block(
     obj_char,block_animation
 )
     local res = {}
-    local anim_length = block_animation["anim_length"] or 0
-    for key,value in pairs(block_animation) do
-        if type(key) ~= "number" then
-            res[key] = value
-        end
-    end
+    local prop_f = block_animation["prop_f"]
+    local anim_length = block_animation["anim_length"]
+    local block_type = block_animation["block_type"]
+    res["prop_f"] = prop_f
+    res["anim_length"] = anim_length
+    res["block_type"] = anim_length
     for i = 0,anim_length do
         local block_frame_function = block_animation[i]
         local FD_frame = 2 + math.floor(i/4)%3
