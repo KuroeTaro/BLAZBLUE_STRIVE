@@ -1,10 +1,9 @@
 -- 线程加载
 --   · 线程对象在第一次调用时一次建好:newThread 要读文件,放在任何线程开始读盘之前,
 --     否则后面每个 newThread 都要排在前面线程的大文件读取后面(旧版进 game_scene 时那一帧卡 5 秒)
---   · 同时在读盘的线程最多 THREAD_MAX_RUNNING 个,按下标顺序依次开:
---     十几个线程同时读大文件时磁盘来回寻道,总吞吐反而更低,主线程偶尔读个小文件也会被排到很后面
---   · THREAD_NO_LIMIT_TABLE[i] = true:第 i 个线程不占读盘名额,第一帧就开(音频解码 / 只读几个文本这种
---     主要吃 CPU、读盘很少的线程;否则 5 秒的音频解码会占着一个名额,后面的贴图线程排着等)
+--   · 同时在跑的线程最多 THREAD_MAX_RUNNING 个,所有线程(贴图 / 音频 / shader 源码)都按下标顺序排队:
+--     十几个线程同时读大文件时磁盘来回寻道,总吞吐反而更低,主线程偶尔读个小文件也会被排到很后面。
+--     目标是不卡主线程,总加载时间长一些可以接受,所以不给音频 / 文本线程开快速通道
 --   · REQUIRE_QUEUE 不为空时先做 require(每帧一项,见 advance_require_functions.lua),做完才开线程:
 --     require 是主线程读盘,和线程一起读的话每一项都要排在线程的大文件后面
 --   · ORDER_LOAD_TABLE 里是函数名字符串,执行时从 _G 取(prep 的时候模块还没 require)
@@ -17,7 +16,6 @@
 THREAD_MAX_RUNNING = 2
 THREAD_OBJECT_TABLE = {}
 THREAD_START_TIME = {}
-THREAD_NO_LIMIT_TABLE = {}
 FILE_TEXT_CACHE = {}
 function run_table_order_load()
     -- require_queue:每帧一项,做完之前不开线程、不执行 order_load
@@ -59,9 +57,7 @@ function run_table_order_load()
                 if thread_error ~= nil then
                     error(THREAD_TABLE[i] .. ": " .. thread_error)
                 end
-                if not THREAD_NO_LIMIT_TABLE[i] then
-                    running = running + 1
-                end
+                running = running + 1
             else
                 -- 线程顺手读的文本(json / glsl)
                 local text_table = ASSET_DATA[i]["__text"]
@@ -84,18 +80,16 @@ function run_table_order_load()
             THREAD_ONCE_TABLE[i] = true
         end
     end
-    -- start_threads(按下标顺序,最多 THREAD_MAX_RUNNING 个同时读盘;THREAD_NO_LIMIT_TABLE 里的不占名额)
+    -- start_threads(按下标顺序,最多 THREAD_MAX_RUNNING 个同时在跑)
     for i = 1,THREAD_AMOUNT do
+        if running >= THREAD_MAX_RUNNING then
+            break
+        end
         if THREAD_OBJECT_TABLE[i] ~= nil and not THREAD_ONCE_TABLE[i] then
-            local no_limit = THREAD_NO_LIMIT_TABLE[i]
-            if no_limit or running < THREAD_MAX_RUNNING then
-                THREAD_OBJECT_TABLE[i]:start()
-                THREAD_ONCE_TABLE[i] = true
-                THREAD_START_TIME[i] = now
-                if not no_limit then
-                    running = running + 1
-                end
-            end
+            THREAD_OBJECT_TABLE[i]:start()
+            THREAD_ONCE_TABLE[i] = true
+            THREAD_START_TIME[i] = now
+            running = running + 1
         end
     end
     -- 暖机队列:每帧做一项,做完才执行下一步 order_load(见 warm_up.lua)
@@ -338,7 +332,6 @@ function init_order_load_table()
     LOADING_FUNCTION_AMOUNT = 0
     THREAD_OBJECT_TABLE = {}
     THREAD_START_TIME = {}
-    THREAD_NO_LIMIT_TABLE = {}
     FILE_TEXT_CACHE = {}
     WARM_UP_QUEUE = {}
 	NEXT_UPDATE_BLOCK = nil

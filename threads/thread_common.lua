@@ -1,4 +1,4 @@
--- 线程里共用的小工具(在线程文件里先 require "love.filesystem",再 require "threads.thread_common")
+-- 线程里共用的小工具(在线程文件里先 require "love.filesystem",再 require "threads/thread_common")
 -- 资源从每个目录的 _pack.bin 里读(由 tools/asset_pack.py 生成,改了素材要重新跑一次那个脚本):
 --   这台机器上每打开一个文件固定要 20ms 以上,散文件一张张开太慢;一个目录只开一次包,
 --   之后按索引 seek + read。.dds 在包里是 zlib 压缩的,在这里解压,主线程拿到的还是 CompressedData

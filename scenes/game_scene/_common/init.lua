@@ -21,7 +21,6 @@ function load_game_scene_common_texture()
     DRAW_CHARACTER_CANVAS = warm_up_record_canvas(width,height)
     DRAW_SHADOW_CANVAS = warm_up_record_canvas(width,height)
     DRAW_VFX_PARTICAL_3D_CANVAS = warm_up_record_canvas(width,height)
-    load_game_scene_texture_stage()
 end
 function load_game_scene_common_config()
     load_game_scene_config_char_LP()

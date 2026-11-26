@@ -8,7 +8,7 @@ local file_name_table = {
     "SFX_up_0","SFX_up_1","SFX_down_0","SFX_down_1","SFX_left_0","SFX_left_1","SFX_right_0",
     "SFX_right_1","SFX_blazblue_confirm_echo","SFX_scene_out"
 }
-local thread_common = require "threads.thread_common"
+local thread_common = require "threads/thread_common"
 local sound_module = thread_common.new_sound_data
 for i = 1,#file_name_table do
     local name = file_name_table[i]

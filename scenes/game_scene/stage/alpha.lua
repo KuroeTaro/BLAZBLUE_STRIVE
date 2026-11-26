@@ -1,5 +1,5 @@
 -- load
--- CANVAS:只在加载时建一次(load_game_scene_common_texture 调用,在 order_load_game_scene_common 里)
+-- CANVAS:只在加载时建一次(order_load_game_scene_common 的 [8] 调用)
 -- 原来放在 load_game_scene_obj_stage 里,训练模式重置(common_game_scene_init_chars_trainning)也会走到,
 -- 每次重置都重新建 4 张全屏 canvas;这 4 张每次画之前都会 clear,不用跟着 obj 重建
 function load_game_scene_texture_stage()
@@ -296,7 +296,8 @@ function order_load_game_scene_stage_frames(load_order)
                 "asset/game_scene/stage/alpha/texture/stage_obj/wallbreak_dynamic.json",
                 warm_up_record_image(ASSET_DATA[19][2])
             )
-            image_stage_game_scene_wallbreak_glow = warm_up_record_image(ASSET_DATA[19][3])
+            image_stage_game_scene_wallbreak_glow = 
+                warm_up_record_image(ASSET_DATA[19][3])
             image_sprite_sheet_stage_game_scene_wallbreak_smoke =
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_obj/wallbreak_smoke.json",
@@ -445,7 +446,6 @@ function order_load_game_scene_stage_audio(load_order)
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
--- 场景 shader(目前没有场景专用 shader,留空)
 function order_load_game_scene_stage_shader(load_order)
     local switch =
     {

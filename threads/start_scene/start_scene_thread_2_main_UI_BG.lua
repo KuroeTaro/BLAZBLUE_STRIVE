@@ -1,6 +1,6 @@
 require "love.filesystem"
 local thread_data = {}
-local thread_common = require "threads.thread_common"
+local thread_common = require "threads/thread_common"
 local compress_module = thread_common.new_compressed_data
 -- BG loop image table
 for i = 1,50 do

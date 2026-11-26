@@ -61,7 +61,7 @@ local move_SFX_folder_table = {
     {folder = "burst",files = {"burst"}}
 }
 local filesys_module = require "love.filesystem"
-local thread_common = require "threads.thread_common"
+local thread_common = require "threads/thread_common"
 local sound_module = thread_common.new_sound_data
 -- stage_interactive_SFX
 thread_data["stage_interactive_SFX"] = {}

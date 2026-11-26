@@ -17,15 +17,6 @@ function load_game_scene_prep()
     local thread_stage_name = stage_name
     load_game_scene_require(LP_name,RP_name,stage_name)
     THREAD_TABLE = load_game_scene_thread_table(thread_LP_name,thread_RP_name,thread_stage_name)
-    THREAD_NO_LIMIT_TABLE = {
-        [10] = true, -- audio
-        [11] = true, -- shader
-        [12] = true, -- LP audio
-        [14] = true, -- LP shader
-        [15] = true, -- RP audio
-        [17] = true, -- RP shader
-        [18] = true  -- stage audio
-    }
     THREAD_AMOUNT = 20 -- 线程数目(含没有线程的 false 项)
     THREAD_ONCE_TABLE = {
         false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
@@ -55,7 +46,7 @@ function load_game_scene_prep()
         "order_load_game_scene_stage_shader"
     }
     CURRENT_ORDER_TABLE = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {7,1,4,3,1,1,1,4,3,1,9,12,39,2,12,39,2,3,4,1} -- 每个load function的最大值
+    ORDER_SIZE_TABLE = {8,1,4,3,1,1,1,4,3,1,9,12,39,2,12,39,2,3,4,1} -- 每个load function的最大值
     LOAD_ONCE_TABLE = {
         false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
     } -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
@@ -117,8 +108,6 @@ function load_game_scene_thread_table(LP_name,RP_name,stage_name)
     return res_table
 end
 function order_load_game_scene_common(load_order)
-    -- LP / RP 数据按 left.lua / right.lua 里的声明顺序加载:obj -> anim -> box / anchor -> config -> canvas -> 贴图
-    -- (canvas 里的贴图要用 config 的参数,所以 config 在前;audio / shader / UI 见各自的 order_load)
     local switch =
     {
         [1] = function()
@@ -136,12 +125,14 @@ function order_load_game_scene_common(load_order)
         [5] = function()
             load_game_scene_common_texture()
         end,
-        -- 角色的程序化 VFX 贴图单独一步(要用 config,config 在 [4])
         [6] = function()
             load_game_scene_texture_LP()
         end,
         [7] = function()
             load_game_scene_texture_RP()
+        end,
+        [8] = function()
+            load_game_scene_texture_stage()
         end
     }
     local this_function = switch[load_order]

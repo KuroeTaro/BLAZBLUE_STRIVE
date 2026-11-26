@@ -4721,15 +4721,15 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_red(
         self_side_obj_char["velocity_cache"] = {0,0}
         if test_input_sys_press_or_hold(self_side_input["dash"]) then
             if test_input_sys_press_or_hold(self_side_input["up"]) then
-                self_side_obj_char["velocity"] = {0,-7.5}
+                self_side_obj_char["velocity"] = {0,-12.5}
             elseif test_input_sys_press_or_hold(self_side_input["down"]) then
-                self_side_obj_char["velocity"] = {0,7.5}
+                self_side_obj_char["velocity"] = {0,12.5}
             elseif test_input_sys_press_or_hold(self_side_input["left"]) then
-                self_side_obj_char["velocity"] = {-7.5,0}
+                self_side_obj_char["velocity"] = {-12.5,0}
             elseif test_input_sys_press_or_hold(self_side_input["right"]) then
-                self_side_obj_char["velocity"] = {7.5,0}
+                self_side_obj_char["velocity"] = {12.5,0}
             else
-                self_side_obj_char["velocity"] = {7.5*self_side_obj_char[5],0}
+                self_side_obj_char["velocity"] = {12.5*self_side_obj_char[5],0}
             end
         else
             self_side_obj_char["velocity"] = {0,0}
@@ -4775,24 +4775,24 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_blue(
         }
         local velocity_cache_uncommon_case = {
             ["7_8_9_pre_jump"] = {0,-25},
-            ["6dash_dash_cancel"] = {7.5*self_side_obj_char[5],0},
-            ["4dash_backdash"] = {-17.5*self_side_obj_char[5],-3.25}
+            ["6dash_dash_cancel"] = {12.5*self_side_obj_char[5],0},
+            ["4dash_backdash"] = {-12.5*self_side_obj_char[5],-3.25}
         }
         self_side_obj_char["velocity_cache"] = self_side_obj_char["velocity"]
         if test_input_sys_press_or_hold(self_side_input["dash"]) then
             if test_input_sys_press_or_hold(self_side_input["up"]) then
-                self_side_obj_char["velocity"] = {0,-7.5}
+                self_side_obj_char["velocity"] = {0,-12.5}
             elseif test_input_sys_press_or_hold(self_side_input["down"]) then
-                self_side_obj_char["velocity"] = {0,7.5}
+                self_side_obj_char["velocity"] = {0,12.5}
             elseif test_input_sys_press_or_hold(self_side_input["left"]) then
-                self_side_obj_char["velocity"] = {-7.5,0}
+                self_side_obj_char["velocity"] = {-12.5,0}
             elseif test_input_sys_press_or_hold(self_side_input["right"]) then
-                self_side_obj_char["velocity"] = {7.5,0}
+                self_side_obj_char["velocity"] = {12.5,0}
             else
-                self_side_obj_char["velocity"] = {7.5*self_side_obj_char[5],0}
+                self_side_obj_char["velocity"] = {12.5*self_side_obj_char[5],0}
             end
         elseif forward_dash_state[self_side_obj_char["state"]] then
-            self_side_obj_char["velocity"] = {7.5*self_side_obj_char[5],0}
+            self_side_obj_char["velocity"] = {12.5*self_side_obj_char[5],0}
         else
             self_side_obj_char["velocity"] = {0,0}
         end
@@ -4844,15 +4844,15 @@ function state_gate_game_scene_char_RP_common_to_burst_RC_purple(
         self_side_obj_char["velocity_cache"] = {0,0}
         if test_input_sys_press_or_hold(self_side_input["dash"]) then
             if test_input_sys_press_or_hold(self_side_input["up"]) then
-                self_side_obj_char["velocity"] = {0,-7.5}
+                self_side_obj_char["velocity"] = {0,-12.5}
             elseif test_input_sys_press_or_hold(self_side_input["down"]) then
-                self_side_obj_char["velocity"] = {0,7.5}
+                self_side_obj_char["velocity"] = {0,12.5}
             elseif test_input_sys_press_or_hold(self_side_input["left"]) then
-                self_side_obj_char["velocity"] = {-7.5,0}
+                self_side_obj_char["velocity"] = {-12.5,0}
             elseif test_input_sys_press_or_hold(self_side_input["right"]) then
-                self_side_obj_char["velocity"] = {7.5,0}
+                self_side_obj_char["velocity"] = {12.5,0}
             else
-                self_side_obj_char["velocity"] = {7.5*self_side_obj_char[5],0}
+                self_side_obj_char["velocity"] = {12.5*self_side_obj_char[5],0}
             end
         else
             self_side_obj_char["velocity"] = {0,0}

@@ -172,7 +172,7 @@ local load_projectile_name_table = {
     "6SP_K_scapegoat_idle",
     "5UA_100_heat_follow_all_screen"
 }
-local thread_common = require "threads.thread_common"
+local thread_common = require "threads/thread_common"
 local filesys_module = require "love.filesystem"
 local image_module = require "love.image"
 local auido_module = require "love.sound"

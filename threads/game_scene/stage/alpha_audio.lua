@@ -7,7 +7,7 @@ local file_name_table = {
     "ground_hard_knockdown","ground_land","ground_soft_knockdown",
     "ground_step_0","ground_step_1","wall_wallbreak","wall_wallstick"
 }
-local thread_common = require "threads.thread_common"
+local thread_common = require "threads/thread_common"
 local sound_module = thread_common.new_sound_data
 thread_data["character_interactive_SFX"] = {}
 for i = 1,#file_name_table do
