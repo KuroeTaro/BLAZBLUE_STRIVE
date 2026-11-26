@@ -1,25 +1,26 @@
 function load_char_select_scene_prep()
     load_char_select_scene_require()
+    -- 线程顺序即 order_load 顺序:audio -> 三个图像美术资产(char / start_0_110f / movie_cover) -> shader
     THREAD_TABLE = {
-        "threads/char_select_scene/char_select_thread_1_char.lua",
-        "threads/char_select_scene/char_select_thread_2_start_0_110f.lua",
-        "threads/char_select_scene/char_select_thread_3_movie_cover.lua",
-        "threads/char_select_scene/char_select_thread_4_audio.lua",
-        "threads/char_select_scene/char_select_thread_5_shader.lua"
+        "threads/char_select_scene/char_select_thread_audio.lua",
+        "threads/char_select_scene/char_select_thread_char.lua",
+        "threads/char_select_scene/char_select_thread_start_0_110f.lua",
+        "threads/char_select_scene/char_select_thread_movie_cover.lua",
+        "threads/char_select_scene/char_select_thread_shader.lua"
     }
     THREAD_AMOUNT = 5 -- 线程数目
     THREAD_ONCE_TABLE = {false,false,false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     ASSET_DATA = {} -- 保持为nil
     -- 函数名字符串:执行时再从 _G 取(prep 的时候这个场景的模块还在 require 队列里)
     ORDER_LOAD_TABLE = {
+        "order_load_char_select_scene_audio",
         "order_load_char_select_scene_UI_char",
         "order_load_char_select_scene_UI_start_0_110f",
         "order_load_char_select_scene_UI_movie_cover",
-        "order_load_char_select_scene_audio",
         "order_load_char_select_scene_shader"
     } -- load_function_table
     CURRENT_ORDER_TABLE = {1,1,1,1,1} -- 如果有两个线程 = {1，1} 三个 = {1，1，1} 以此类推
-    ORDER_SIZE_TABLE = {2,1,1,1,2} -- 每个load function的最大值
+    ORDER_SIZE_TABLE = {1,2,1,1,2} -- 每个load function的最大值
     LOAD_ONCE_TABLE = {false,false,false,false,false} -- 如果有两个线程 = {false，false} 三个 = {false，false，false} 以此类推
     LOADING_FUNCTION_AMOUNT = 5 -- 和线程数相同
 	NEXT_UPDATE_BLOCK = "update_char_select_scene_ease_in_0f_36f"
@@ -29,36 +30,47 @@ end
 function load_char_select_scene_require()
     require_queue_push_folder("scenes/char_select_scene")
 end
+-- audio:static SFX 的 SoundData 和 BGM 的 Decoder 由 threads/char_select_scene/char_select_thread_audio.lua 读好
+function order_load_char_select_scene_audio(load_order)
+    local switch =
+    {
+        [1] = function()
+            load_char_select_scene_audio()
+        end
+    }
+    local this_function = switch[load_order]
+    if this_function then this_function() end
+end
 function order_load_char_select_scene_UI_char(load_order)
     local switch =
     {
         [1] = function()
             -- global_use_shape_image
-            image_UI_char_select_scene_bar_mark = warm_up_record_image(ASSET_DATA[1][1])
-            image_UI_char_select_scene_char_select_left_alpha = warm_up_record_image(ASSET_DATA[1][2])
-            image_UI_char_select_scene_char_select_right_alpha = warm_up_record_image(ASSET_DATA[1][3])
-            image_UI_char_select_scene_control_method_L = warm_up_record_image(ASSET_DATA[1][4])
-            image_UI_char_select_scene_control_method_R = warm_up_record_image(ASSET_DATA[1][5])
-            image_UI_char_select_scene_ring = warm_up_record_image(ASSET_DATA[1][6])
+            image_UI_char_select_scene_bar_mark = warm_up_record_image(ASSET_DATA[2][1])
+            image_UI_char_select_scene_char_select_left_alpha = warm_up_record_image(ASSET_DATA[2][2])
+            image_UI_char_select_scene_char_select_right_alpha = warm_up_record_image(ASSET_DATA[2][3])
+            image_UI_char_select_scene_control_method_L = warm_up_record_image(ASSET_DATA[2][4])
+            image_UI_char_select_scene_control_method_R = warm_up_record_image(ASSET_DATA[2][5])
+            image_UI_char_select_scene_ring = warm_up_record_image(ASSET_DATA[2][6])
                 -- char_icon_alpha_image_name
             image_table_UI_char_select_scene_char_icon_alpha = {}
             for i = 1,8 do
                 image_table_UI_char_select_scene_char_icon_alpha[i] =
-                warm_up_record_image(ASSET_DATA[1]["char_icon_alpha"][i])
+                warm_up_record_image(ASSET_DATA[2]["char_icon_alpha"][i])
             end
             image_table_UI_char_select_scene_char_select_char = {}
             for i = 1,8 do
                 image_table_UI_char_select_scene_char_select_char[i] =
-                warm_up_record_image(ASSET_DATA[1]["char_select_char"][i])
+                warm_up_record_image(ASSET_DATA[2]["char_select_char"][i])
             end
             image_table_UI_char_select_scene_char_select_char_txt = {}
             for i = 1,8 do
                 image_table_UI_char_select_scene_char_select_char_txt[i] =
-                warm_up_record_image(ASSET_DATA[1]["char_select_char_txt"][i])
+                warm_up_record_image(ASSET_DATA[2]["char_select_char_txt"][i])
             end
             image_table_UI_char_select_scene_number = {}
             for i = 1,10 do
-                image_table_UI_char_select_scene_number[i - 1] = warm_up_record_image(ASSET_DATA[1]["number"][i - 1])
+                image_table_UI_char_select_scene_number[i - 1] = warm_up_record_image(ASSET_DATA[2]["number"][i - 1])
             end
         end,
         [2] = function()
@@ -76,7 +88,7 @@ function order_load_char_select_scene_UI_start_0_110f(load_order)
             image_sprite_sheet_UI_char_select_scene_start_0_110f =
             common_sprite_sheet_load(
                 "asset/char_select_scene/texture/scene_start_0_110f.json",
-                warm_up_record_image(ASSET_DATA[2]["scene_start_0_110f"])
+                warm_up_record_image(ASSET_DATA[3]["scene_start_0_110f"])
             )
         end
     }
@@ -90,25 +102,14 @@ function order_load_char_select_scene_UI_movie_cover(load_order)
             image_sprite_sheet_UI_char_select_scene_movie_cover =
             common_sprite_sheet_load(
                 "asset/char_select_scene/texture/movie_cover.json",
-                warm_up_record_image(ASSET_DATA[3]["movie_cover"])
+                warm_up_record_image(ASSET_DATA[4]["movie_cover"])
             )
         end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
--- audio:static SFX 的 SoundData 和 BGM 的 Decoder 由 threads/char_select_scene/char_select_thread_4_audio.lua 读好
-function order_load_char_select_scene_audio(load_order)
-    local switch =
-    {
-        [1] = function()
-            load_char_select_scene_audio()
-        end
-    }
-    local this_function = switch[load_order]
-    if this_function then this_function() end
-end
--- shader:源码由 threads/char_select_scene/char_select_thread_5_shader.lua 读好
+-- shader:源码由 threads/char_select_scene/char_select_thread_shader.lua 读好
 -- 每一步建一个,暖机由加载流程排到下一帧(load_char_select_scene_shader(i) 见 init.lua)
 function order_load_char_select_scene_shader(load_order)
     local switch =

@@ -50,4 +50,4 @@ thread_data["number"][6] = compress_module("asset/char_select_scene/texture/numb
 thread_data["number"][7] = compress_module("asset/char_select_scene/texture/number/7.dds")
 thread_data["number"][8] = compress_module("asset/char_select_scene/texture/number/8.dds")
 thread_data["number"][9] = compress_module("asset/char_select_scene/texture/number/9.dds")
-love.thread.getChannel('thread_data_1'):push(thread_data)
+love.thread.getChannel('thread_data_2'):push(thread_data)

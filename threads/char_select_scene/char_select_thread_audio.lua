@@ -14,4 +14,4 @@ for i = 1,#file_name_table do
 end
 -- BGM 是 stream:线程里只建 Decoder(打开 ogg 要读文件头、找结尾),主线程用它建 Source
 thread_data["BGM_moonlight_re_edit"] = thread_common.new_decoder(base .. "BGM_moonlight_re_edit.ogg")
-love.thread.getChannel('thread_data_4'):push(thread_data)
+love.thread.getChannel('thread_data_1'):push(thread_data)
