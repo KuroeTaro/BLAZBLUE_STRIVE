@@ -32,31 +32,31 @@ function order_load_char_select_scene_UI_char(load_order)
     {
         [1] = function()
             -- global_use_shape_image
-            image_UI_char_select_scene_bar_mark = love.graphics.newImage(ASSET_DATA[1][1])
-            image_UI_char_select_scene_char_select_left_alpha = love.graphics.newImage(ASSET_DATA[1][2])
-            image_UI_char_select_scene_char_select_right_alpha = love.graphics.newImage(ASSET_DATA[1][3])
-            image_UI_char_select_scene_control_method_L = love.graphics.newImage(ASSET_DATA[1][4])
-            image_UI_char_select_scene_control_method_R = love.graphics.newImage(ASSET_DATA[1][5])
-            image_UI_char_select_scene_ring = love.graphics.newImage(ASSET_DATA[1][6])
+            image_UI_char_select_scene_bar_mark = warm_up_record_image(ASSET_DATA[1][1])
+            image_UI_char_select_scene_char_select_left_alpha = warm_up_record_image(ASSET_DATA[1][2])
+            image_UI_char_select_scene_char_select_right_alpha = warm_up_record_image(ASSET_DATA[1][3])
+            image_UI_char_select_scene_control_method_L = warm_up_record_image(ASSET_DATA[1][4])
+            image_UI_char_select_scene_control_method_R = warm_up_record_image(ASSET_DATA[1][5])
+            image_UI_char_select_scene_ring = warm_up_record_image(ASSET_DATA[1][6])
                 -- char_icon_alpha_image_name
             image_table_UI_char_select_scene_char_icon_alpha = {}
             for i = 1,8 do
                 image_table_UI_char_select_scene_char_icon_alpha[i] =
-                love.graphics.newImage(ASSET_DATA[1]["char_icon_alpha"][i])
+                warm_up_record_image(ASSET_DATA[1]["char_icon_alpha"][i])
             end
             image_table_UI_char_select_scene_char_select_char = {}
             for i = 1,8 do
                 image_table_UI_char_select_scene_char_select_char[i] =
-                love.graphics.newImage(ASSET_DATA[1]["char_select_char"][i])
+                warm_up_record_image(ASSET_DATA[1]["char_select_char"][i])
             end
             image_table_UI_char_select_scene_char_select_char_txt = {}
             for i = 1,8 do
                 image_table_UI_char_select_scene_char_select_char_txt[i] =
-                love.graphics.newImage(ASSET_DATA[1]["char_select_char_txt"][i])
+                warm_up_record_image(ASSET_DATA[1]["char_select_char_txt"][i])
             end
             image_table_UI_char_select_scene_number = {}
             for i = 1,10 do
-                image_table_UI_char_select_scene_number[i - 1] = love.graphics.newImage(ASSET_DATA[1]["number"][i - 1])
+                image_table_UI_char_select_scene_number[i - 1] = warm_up_record_image(ASSET_DATA[1]["number"][i - 1])
             end
         end,
         [2] = function()
@@ -74,7 +74,7 @@ function order_load_char_select_scene_UI_start_0_110f(load_order)
             image_sprite_sheet_UI_char_select_scene_start_0_110f =
             common_sprite_sheet_load(
                 "asset/char_select_scene/texture/scene_start_0_110f.json",
-                love.graphics.newImage(ASSET_DATA[2]["scene_start_0_110f"])
+                warm_up_record_image(ASSET_DATA[2]["scene_start_0_110f"])
             )
         end
     }
@@ -88,7 +88,7 @@ function order_load_char_select_scene_UI_movie_cover(load_order)
             image_sprite_sheet_UI_char_select_scene_movie_cover =
             common_sprite_sheet_load(
                 "asset/char_select_scene/texture/movie_cover.json",
-                love.graphics.newImage(ASSET_DATA[3]["movie_cover"])
+                warm_up_record_image(ASSET_DATA[3]["movie_cover"])
             )
         end
     }

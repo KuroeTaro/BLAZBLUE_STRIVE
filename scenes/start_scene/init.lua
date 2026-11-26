@@ -1,8 +1,8 @@
 function load_start_scene_obj()
-    CANVAS_BAR = love.graphics.newCanvas(232,16)
-    CANVAS_BAR_ALPHA_ONLY = love.graphics.newCanvas(232,16)
-    CANVAS_RECORD = love.graphics.newCanvas(320,40)
-    CANVAS_RECORD_ALPHA_ONLY = love.graphics.newCanvas(320,40)
+    CANVAS_BAR = warm_up_record_canvas(232,16)
+    CANVAS_BAR_ALPHA_ONLY = warm_up_record_canvas(232,16)
+    CANVAS_RECORD = warm_up_record_canvas(320,40)
+    CANVAS_RECORD_ALPHA_ONLY = warm_up_record_canvas(320,40)
     -- x_y_z_opacity_sx_sy_r_f
     -- solid_color
     obj_UI_start_scene_solid_color = {0,0,0,1,1,1,0,0}

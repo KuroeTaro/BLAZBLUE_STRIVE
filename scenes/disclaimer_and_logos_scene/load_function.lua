@@ -25,9 +25,9 @@ function order_load_disclaimer_and_logo_scene_1_general(load_order)
             load_disclaimer_and_logos_scene_anim()
             -- image_table以0开头 因为AE的帧数是以0开头设计的
             image_table_UI_disclaimer_and_logos_scene_singular = {}
-            image_table_UI_disclaimer_and_logos_scene_singular[0] = love.graphics.newImage(ASSET_DATA[1][1])
-            image_table_UI_disclaimer_and_logos_scene_singular[1] = love.graphics.newImage(ASSET_DATA[1][2])
-            image_table_UI_disclaimer_and_logos_scene_singular[2] = love.graphics.newImage(ASSET_DATA[1][3])
+            image_table_UI_disclaimer_and_logos_scene_singular[0] = warm_up_record_image(ASSET_DATA[1][1])
+            image_table_UI_disclaimer_and_logos_scene_singular[1] = warm_up_record_image(ASSET_DATA[1][2])
+            image_table_UI_disclaimer_and_logos_scene_singular[2] = warm_up_record_image(ASSET_DATA[1][3])
         end
     }
     local this_function = switch[load_order]

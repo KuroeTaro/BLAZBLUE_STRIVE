@@ -31,15 +31,19 @@ end
 -- 只调 newImage / newShader 时,很多驱动会把真正的上传 / 编译 / 链接拖到第一次绘制,
 -- 不暖机的话第一次在游戏里用到才卡。统一的做法:
 --   1. order_load 的一步里只「建」资源,建的时候登记进暖机队列 WARM_UP_QUEUE
---        纹理:照常 love.graphics.newImage / newCanvas(序列帧图集走 common_sprite_sheet_load,里面也是 newImage)
---              这一步执行期间这两个函数被临时包一层,新建的纹理自动登记
---        shader:用 common_shader_new(source,blend_mode,drawable_kind,prepare) 建,同时登记游戏里的画法
+--        纹理:用 warm_up_record_image / warm_up_record_canvas 建,参数和 love.graphics.newImage / newCanvas 一样
+--              (不去替换 love.graphics 自带的函数,order_load 里直接调这两个)
+--              加载计时打开时,每一步结束会用 love.graphics.getStats 数一下这一步新建了几张纹理,
+--              比登记的多就打印警告(有地方还在直接调 love.graphics.newImage / newCanvas,那几张不会暖机)
+--        shader:用 warm_up_record_shader(path,blend_mode,drawable_kind,prepare,define_table)
+--              读源码 + 建 + 登记游戏里的画法
 --   2. 之后每帧做队列里的一项,队列空了才执行下一步 order_load(建和暖机错开一帧,一帧只做一件重活)
 --        纹理:这一步建的全部纹理合成一项,每张缩成 8x8 往 8x8 canvas 上画一次(整张都被采样到)
 --        shader:每个 shader 一项,按登记的画法先画进 8x8 canvas,再对屏幕用 alpha 0 画一次
 --              (驱动可能按绘制目标格式、混合模式、顶点格式再编译一次,所以按游戏里的画法画;
 --               在 update 里跑,love.draw 开头会 clear,画面上看不到)
---   common_shader_new 的参数:
+--   warm_up_record_shader 的参数:
+--     path:shader 文件路径,源码用 common_read_text 取(线程读好的直接拿,见 thread_load.lua)
 --     blend_mode:游戏里画这个 shader 用的混合模式
 --     drawable_kind:游戏里画的图元
 --       "rectangle"   全屏程序化(love.graphics.rectangle)
@@ -48,31 +52,27 @@ end
 --       "mesh"        画粒子 mesh(顶点着色器,common_particle_mesh_new)
 --     prepare:可选,画之前调一次 prepare(shader),例如送真实的数据贴图;
 --              普通 uniform 的数值不影响编译(没 send 的 extern 是 0,Image 是 LOVE 的默认贴图),一般不用传
+--     define_table:可选,编译期开关,例如 {"PER_PARTICLE"};每一项插一行 #define,
+--                  插在开头的 #pragma language 那一行后面(LÖVE 要求它在最前面),没有 pragma 就插在最前面
 WARM_UP_QUEUE = {}
 local warm_up_step_name = ""
 local warm_up_texture_list = nil
 local warm_up_shader_list = nil
-local warm_up_new_image = nil
-local warm_up_new_canvas = nil
-local warm_up_target_canvas = nil   -- 暖机画到这张 8x8 canvas 上
-local warm_up_source_canvas = nil   -- "texture" / "sprite_batch" 画的贴图
-local warm_up_sprite_batch = nil
-local warm_up_mesh = nil
-local function warm_up_record_image(...)
-    local texture = warm_up_new_image(...)
+local warm_up_texture_count_before = 0  -- 加载计时打开时,这一步开始时的纹理总数(Image + Canvas)
+local warm_up_target_canvas = love.graphics.newCanvas(8,8)   -- 暖机画到这张 8x8 canvas 上
+local warm_up_source_canvas = love.graphics.newCanvas(8,8)   -- "texture" / "sprite_batch" 画的贴图
+local warm_up_sprite_batch = love.graphics.newSpriteBatch(warm_up_source_canvas,1)
+local warm_up_mesh = common_particle_mesh_new(1)
+warm_up_sprite_batch:add(0,0)
+local function warm_up_record_texture(texture)
     warm_up_texture_list[#warm_up_texture_list + 1] = texture
     if DEBUG_ORDER_LOAD_TIMING then
         DEBUG_RESOURCE_ORIGIN[texture] = warm_up_step_name
     end
-    return texture
 end
-local function warm_up_record_canvas(...)
-    local texture = warm_up_new_canvas(...)
-    warm_up_texture_list[#warm_up_texture_list + 1] = texture
-    if DEBUG_ORDER_LOAD_TIMING then
-        DEBUG_RESOURCE_ORIGIN[texture] = warm_up_step_name
-    end
-    return texture
+local function warm_up_get_texture_count()
+    local stats = love.graphics.getStats()
+    return stats.images + stats.canvases
 end
 local function warm_up_draw(drawable_kind)
     if drawable_kind == "rectangle" then
@@ -85,38 +85,42 @@ local function warm_up_draw(drawable_kind)
         love.graphics.draw(warm_up_mesh)
     end
 end
-function warm_up_record_begin(step_name)
-    -- order_load 的一步开始:之后 newImage / newCanvas 新建的纹理都登记下来
-    warm_up_step_name = step_name
-    warm_up_texture_list = {}
-    warm_up_shader_list = {}
-    warm_up_new_image = love.graphics.newImage
-    warm_up_new_canvas = love.graphics.newCanvas
-    love.graphics.newImage = warm_up_record_image
-    love.graphics.newCanvas = warm_up_record_canvas
+function warm_up_record_image(...)
+    -- 建 Image 并登记进这一步的暖机(只在 order_load 里调用,参数和 love.graphics.newImage 一样)
+    local texture = love.graphics.newImage(...)
+    warm_up_record_texture(texture)
+    return texture
 end
-function warm_up_record_end()
-    -- order_load 的一步结束:换回原来的函数,这一步登记的东西排进暖机队列(纹理一项,shader 各一项)
-    love.graphics.newImage = warm_up_new_image
-    love.graphics.newCanvas = warm_up_new_canvas
-    if #warm_up_texture_list > 0 then
-        WARM_UP_QUEUE[#WARM_UP_QUEUE + 1] = {"texture",warm_up_step_name,warm_up_texture_list}
+function warm_up_record_canvas(...)
+    -- 建 Canvas 并登记进这一步的暖机(只在 order_load 里调用,参数和 love.graphics.newCanvas 一样)
+    local texture = love.graphics.newCanvas(...)
+    warm_up_record_texture(texture)
+    return texture
+end
+function warm_up_record_shader(path,blend_mode,drawable_kind,prepare,define_table)
+    -- 读源码 + 建 shader + 登记暖机时的画法(只在 order_load 里调用,参数见文件开头)
+    -- warm_up_step_name / warm_up_shader_list 是这个文件的 local,在 warm_up_record_begin / end 之间才有效
+    local source = common_read_text(path)
+    if define_table ~= nil and #define_table > 0 then
+        local define_text = "#define " .. table.concat(define_table,"\n#define ") .. "\n"
+        local pragma_line = string.match(source,"^#pragma language[^\n]*\n")
+        if pragma_line ~= nil then
+            source = pragma_line .. define_text .. string.sub(source,#pragma_line + 1)
+        else
+            source = define_text .. source
+        end
     end
-    for k = 1,#warm_up_shader_list do
-        WARM_UP_QUEUE[#WARM_UP_QUEUE + 1] = warm_up_shader_list[k]
+    local shader = love.graphics.newShader(source)
+    if DEBUG_ORDER_LOAD_TIMING then
+        DEBUG_RESOURCE_ORIGIN[shader] = warm_up_step_name
     end
-    warm_up_texture_list = nil
-    warm_up_shader_list = nil
+    warm_up_shader_list[#warm_up_shader_list + 1] = {
+        "shader",warm_up_step_name,shader,blend_mode,drawable_kind,prepare
+    }
+    return shader
 end
 function warm_up_queue_step()
     -- 做暖机队列里的第一项,返回这一项的说明(给加载计时打印用)
-    if warm_up_target_canvas == nil then
-        warm_up_target_canvas = love.graphics.newCanvas(8,8)
-        warm_up_source_canvas = love.graphics.newCanvas(8,8)
-        warm_up_sprite_batch = love.graphics.newSpriteBatch(warm_up_source_canvas,1)
-        warm_up_sprite_batch:add(0,0)
-        warm_up_mesh = common_particle_mesh_new(1)
-    end
     local item = table.remove(WARM_UP_QUEUE,1)
     love.graphics.push("all")
     if item[1] == "texture" then

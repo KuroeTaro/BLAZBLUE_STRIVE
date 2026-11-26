@@ -857,13 +857,13 @@ function load_game_scene_texture_RP()
     texture_table_game_scene_RP = {}
     -- 6SP_P 诅咒光环用的 1x1 白图:shader 画在它上面,拉伸成所有粒子的包围盒
     quad_image_data:setPixel(0,0,1,1,1,1)
-    texture_table_game_scene_RP["6SP_P_arua_quad_image"] = love.graphics.newImage(quad_image_data)
+    texture_table_game_scene_RP["6SP_P_arua_quad_image"] = warm_up_record_image(quad_image_data)
     -- 6SP_P 诅咒光环的粒子数据贴图(rgba32f,宽 = max_particles,高 = 2):代替 uniform 数组
     -- 加载时建一次,同一侧释放的光环共用(每次 draw 前重新写入再上传,GL 按调用顺序执行,不会互相覆盖)
     texture_table_game_scene_RP["6SP_P_arua_particle_image_data"] = love.image.newImageData(
         config_game_scene_RP["6SP_P_arua"]["max_particles"],2,"rgba32f"
     )
-    texture_table_game_scene_RP["6SP_P_arua_particle_image"] = love.graphics.newImage(
+    texture_table_game_scene_RP["6SP_P_arua_particle_image"] = warm_up_record_image(
         texture_table_game_scene_RP["6SP_P_arua_particle_image_data"]
     )
     texture_table_game_scene_RP["6SP_P_arua_particle_image"]:setFilter("nearest","nearest")
@@ -1342,7 +1342,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1359,7 +1359,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1375,7 +1375,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1393,7 +1393,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1410,7 +1410,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1425,7 +1425,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1443,7 +1443,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1462,7 +1462,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1478,7 +1478,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1498,7 +1498,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1515,7 +1515,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1531,7 +1531,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1548,7 +1548,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1567,7 +1567,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/universal/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1583,7 +1583,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1599,7 +1599,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1615,7 +1615,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1632,7 +1632,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1646,7 +1646,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1665,7 +1665,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1684,7 +1684,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1701,7 +1701,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1721,7 +1721,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1740,7 +1740,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1758,7 +1758,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1774,7 +1774,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1792,7 +1792,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_projectile_game_scene_RP[v.."_projectile"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/projectile/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_projectile"])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v.."_projectile"])
                 )
             end
         end,
@@ -1811,7 +1811,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_projectile_game_scene_RP[v.."_projectile"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/projectile/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_projectile"])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v.."_projectile"])
                 )
             end
         end,
@@ -1824,7 +1824,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_projectile_game_scene_RP[v.."_projectile"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/projectile/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_projectile"])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v.."_projectile"])
                 )
             end
         end,
@@ -1844,7 +1844,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1856,7 +1856,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1868,7 +1868,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_char_game_scene_RP[v] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/attack/TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v])
                 )
             end
         end,
@@ -1891,7 +1891,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_VFX_game_scene_RP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v.."_move_VFX"])
                 )
             end
         end,
@@ -1906,7 +1906,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_VFX_game_scene_RP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v.."_move_VFX"])
                 )
             end
         end,
@@ -1920,7 +1920,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_VFX_game_scene_RP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v.."_move_VFX"])
                 )
             end
         end,
@@ -1939,7 +1939,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_VFX_game_scene_RP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v.."_move_VFX"])
                 )
             end
         end,
@@ -1951,7 +1951,7 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_VFX_game_scene_RP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v.."_move_VFX"])
                 )
             end
         end,
@@ -1963,46 +1963,44 @@ function order_load_game_scene_char_RP_frames(load_order)
                 image_sprite_sheet_table_VFX_game_scene_RP[v.."_move_VFX"] =
                 common_sprite_sheet_load(
                     "asset/game_scene/characters/TRM/texture/move_VFX/".."TRM_"..v..".json",
-                    love.graphics.newImage(PLAYER_ASSET_DATA[v.."_move_VFX"])
+                    warm_up_record_image(PLAYER_ASSET_DATA[v.."_move_VFX"])
                 )
             end
         end,
         -- overdrive_badge(单张 static,缩放/透明度由 _VFX.lua 的时间轴重建)
         [39] = function()
             image_VFX_game_scene_RP_overdrive_badge_static =
-            love.graphics.newImage(PLAYER_ASSET_DATA["overdrive_badge_static"])
+            warm_up_record_image(PLAYER_ASSET_DATA["overdrive_badge_static"])
         end
     }
     local this_function = switch[load_order]
     if this_function then this_function() end
 end
 function order_load_game_scene_char_RP_shader(load_order)
-    -- 每一步建一个 shader,暖机由加载流程排到下一帧(common_shader_new 见 update_general_use_functions/warm_up.lua)
+    -- 每一步建一个 shader,暖机由加载流程排到下一帧(warm_up_record_shader 见 update_general_use_functions/warm_up.lua)
     local switch =
     {
         -- drive_sys 锁链渐变:游戏里是画锁链的 sprite_batch
         [1] = function()
             shader_game_scene_RP = {}
-            shader_game_scene_RP["drive_sys_chain_fade"] = common_shader_new(
-                common_read_text("shaders/characters/TRM/drive_sys_chain_fade.glsl"),"alpha","sprite_batch"
+            shader_game_scene_RP["drive_sys_chain_fade"] = warm_up_record_shader(
+                "shaders/characters/TRM/drive_sys_chain_fade.glsl","alpha","sprite_batch"
             )
         end,
         -- 6SP_P 诅咒光环(程序化生成)
-        -- per_particle_noise 是编译期开关:读出源码,按 config 在 #pragma 那行后面插 #define,
+        -- per_particle_noise 是编译期开关:按 config 传 define_table,warm_up_record_shader 在 #pragma 那行后面插 #define,
         -- shader 里只编译用得到的那条路径(config 在 order_load_game_scene_common 里已经加载)
         -- 游戏里是 1x1 白图拉伸画在屏幕上,混合模式用 config 的;
         -- 暖机前按真实状态送一个粒子(float 数据贴图、循环里真的有粒子),
         -- 粒子数据贴图在 order_load_game_scene_common 里已经建好
         [2] = function()
             local config = config_game_scene_RP["6SP_P_arua"]
-            local source = common_read_text("shaders/characters/TRM/6SP_P_arua.glsl")
+            local define_table = {}
             if config["per_particle_noise"] == 1 then
-                source = string.gsub(
-                    source,"#pragma language glsl3","#pragma language glsl3\n#define PER_PARTICLE",1
-                )
+                define_table[1] = "PER_PARTICLE"
             end
-            shader_game_scene_RP["6SP_P_arua"] = common_shader_new(
-                source,config["blend_mode"],"texture",function(shader)
+            shader_game_scene_RP["6SP_P_arua"] = warm_up_record_shader(
+                "shaders/characters/TRM/6SP_P_arua.glsl",config["blend_mode"],"texture",function(shader)
                     local shader_config = config["shader"]
                     local unit = shader_config["unit"]
                     local image_data = texture_table_game_scene_RP["6SP_P_arua_particle_image_data"]
@@ -2021,7 +2019,7 @@ function order_load_game_scene_char_RP_shader(load_order)
                     shader:send("area_origin",{-unit,-unit})
                     shader:send("area_size",{unit*2,unit*2})
                     shader:send("noise_offset",{0,0})
-                end
+                end,define_table
             )
         end
     }

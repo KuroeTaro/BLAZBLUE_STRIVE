@@ -3,11 +3,11 @@ function load_char_select_scene_obj()
     -- CANVAS
     local width = love.graphics.getWidth()
     local height = love.graphics.getHeight()
-    CANVAS = love.graphics.newCanvas(width,height)
-    CANVAS_RADIAL_BLUR = love.graphics.newCanvas(width,height)
-    CANVAS_ALPHA_COMP = love.graphics.newCanvas(width,height)
-    CANVAS_ALPHA_ONLY = love.graphics.newCanvas(width,height)
-    CANVAS_CHAR_COMP_LR = love.graphics.newCanvas(1650,455)
+    CANVAS = warm_up_record_canvas(width,height)
+    CANVAS_RADIAL_BLUR = warm_up_record_canvas(width,height)
+    CANVAS_ALPHA_COMP = warm_up_record_canvas(width,height)
+    CANVAS_ALPHA_ONLY = warm_up_record_canvas(width,height)
+    CANVAS_CHAR_COMP_LR = warm_up_record_canvas(1650,455)
     -- black_solid
     obj_UI_char_select_scene_black_solid = {0,0,nil,1,1,1,0,0}
     obj_UI_char_select_scene_black_solid["FCT"] = {0,0,0,0,0,0,0,0}
@@ -531,12 +531,12 @@ end
 function load_char_select_scene_shader(i)
     local switch = {
         -- 背景光晕:全屏 rectangle 画进 canvas
-        [1] = function() shader_char_select_scene_fractal_noise = common_shader_new(
-            common_read_text("shaders/char_select_fractal_noise.glsl"),"alpha","rectangle"
+        [1] = function() shader_char_select_scene_fractal_noise = warm_up_record_shader(
+            "shaders/char_select_fractal_noise.glsl","alpha","rectangle"
         ) end,
         -- 背景光晕:把 canvas 画进 canvas
-        [2] = function() shader_char_select_scene_radial_blur = common_shader_new(
-            common_read_text("shaders/radial_blur.glsl"),"alpha","texture"
+        [2] = function() shader_char_select_scene_radial_blur = warm_up_record_shader(
+            "shaders/radial_blur.glsl","alpha","texture"
         ) end
     }
     local this_function = switch[i]

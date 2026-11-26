@@ -1,12 +1,16 @@
 -- load
-function load_game_scene_obj_stage()
-    -- CANVAS
+-- CANVAS:只在加载时建一次(load_game_scene_common_texture 调用,在 order_load_game_scene_common 里)
+-- 原来放在 load_game_scene_obj_stage 里,训练模式重置(common_game_scene_init_chars_trainning)也会走到,
+-- 每次重置都重新建 4 张全屏 canvas;这 4 张每次画之前都会 clear,不用跟着 obj 重建
+function load_game_scene_texture_stage()
     local width = love.graphics.getWidth()
     local height = love.graphics.getHeight()
-    DRAW_STAGE_GLOW_CANVAS = love.graphics.newCanvas(width,height)
-    DRAW_STAGE_RADIAL_BLUR_CANVAS = love.graphics.newCanvas(width,height)
-    DRAW_STAGE_ALPHA_COMP_CANVAS = love.graphics.newCanvas(width,height)
-    DRAW_STAGE_ALPHA_ONLY_CANVAS = love.graphics.newCanvas(width,height)
+    DRAW_STAGE_GLOW_CANVAS = warm_up_record_canvas(width,height)
+    DRAW_STAGE_RADIAL_BLUR_CANVAS = warm_up_record_canvas(width,height)
+    DRAW_STAGE_ALPHA_COMP_CANVAS = warm_up_record_canvas(width,height)
+    DRAW_STAGE_ALPHA_ONLY_CANVAS = warm_up_record_canvas(width,height)
+end
+function load_game_scene_obj_stage()
     obj_stage_game_scene_mid_collision_anchor = 0
     -- common
     -- main
@@ -285,29 +289,29 @@ function order_load_game_scene_stage_frames(load_order)
             image_sprite_sheet_stage_game_scene_wallbreak_after_debris =
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_obj/wallbreak_after_debris.json",
-                love.graphics.newImage(ASSET_DATA[19][1])
+                warm_up_record_image(ASSET_DATA[19][1])
             )
             image_sprite_sheet_stage_game_scene_wallbreak_dynamic =
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_obj/wallbreak_dynamic.json",
-                love.graphics.newImage(ASSET_DATA[19][2])
+                warm_up_record_image(ASSET_DATA[19][2])
             )
-            image_stage_game_scene_wallbreak_glow = love.graphics.newImage(ASSET_DATA[19][3])
+            image_stage_game_scene_wallbreak_glow = warm_up_record_image(ASSET_DATA[19][3])
             image_sprite_sheet_stage_game_scene_wallbreak_smoke =
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_obj/wallbreak_smoke.json",
-                love.graphics.newImage(ASSET_DATA[19][4])
+                warm_up_record_image(ASSET_DATA[19][4])
             )
             image_sprite_sheet_stage_game_scene_wallstick = {}
             image_sprite_sheet_stage_game_scene_wallstick[0] =
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_obj/wallstick_ver0.json",
-                love.graphics.newImage(ASSET_DATA[19][5])
+                warm_up_record_image(ASSET_DATA[19][5])
             )
             image_sprite_sheet_stage_game_scene_wallstick[1] =
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_obj/wallstick_ver1.json",
-                love.graphics.newImage(ASSET_DATA[19][6])
+                warm_up_record_image(ASSET_DATA[19][6])
             )
         end,
         [2] = function()
@@ -316,42 +320,42 @@ function order_load_game_scene_stage_frames(load_order)
             image_sprite_sheet_VFX_game_scene_air_dash_shockwave =
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_VFX/air_dash_shockwave.json",
-                love.graphics.newImage(ASSET_DATA[19]["air_dash_shockwave"])
+                warm_up_record_image(ASSET_DATA[19]["air_dash_shockwave"])
             )
                 -- smoke
             image_sprite_sheet_VFX_game_scene_dash_shot =
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_VFX/dash_shot.json",
-                love.graphics.newImage(ASSET_DATA[19]["dash_shot"])
+                warm_up_record_image(ASSET_DATA[19]["dash_shot"])
             )
             image_sprite_sheet_VFX_game_scene_horizontal_shot =
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_VFX/horizontal_shot.json",
-                love.graphics.newImage(ASSET_DATA[19]["horizontal_shot"])
+                warm_up_record_image(ASSET_DATA[19]["horizontal_shot"])
             )
             image_sprite_sheet_VFX_game_scene_land_blow =
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_VFX/land_blow.json",
-                love.graphics.newImage(ASSET_DATA[19]["land_blow"])
+                warm_up_record_image(ASSET_DATA[19]["land_blow"])
             )
             image_sprite_sheet_VFX_game_scene_vertical_shot =
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_VFX/vertical_shot.json",
-                love.graphics.newImage(ASSET_DATA[19]["vertical_shot"])
+                warm_up_record_image(ASSET_DATA[19]["vertical_shot"])
             )
                 -- spark
             image_sprite_sheet_VFX_game_scene_dcc_blow =
             common_sprite_sheet_load(
                 "asset/game_scene/stage/alpha/texture/stage_VFX/dcc_blow.json",
-                love.graphics.newImage(ASSET_DATA[19]["dcc_blow"])
+                warm_up_record_image(ASSET_DATA[19]["dcc_blow"])
             )
         end,
         [3] = function()
             -- stage_images
-            image_stage_game_scene_ground = love.graphics.newImage(ASSET_DATA[19][7])
-            image_stage_game_scene_stage_liner_fade_alpha = love.graphics.newImage(ASSET_DATA[19][8])
-            image_stage_game_scene_stair = love.graphics.newImage(ASSET_DATA[19][9])
-            image_stage_game_scene_tile_map = love.graphics.newImage(ASSET_DATA[19][10])
+            image_stage_game_scene_ground = warm_up_record_image(ASSET_DATA[19][7])
+            image_stage_game_scene_stage_liner_fade_alpha = warm_up_record_image(ASSET_DATA[19][8])
+            image_stage_game_scene_stair = warm_up_record_image(ASSET_DATA[19][9])
+            image_stage_game_scene_tile_map = warm_up_record_image(ASSET_DATA[19][10])
         end,
         [4] = function()
             -- stage_sprite_batch
