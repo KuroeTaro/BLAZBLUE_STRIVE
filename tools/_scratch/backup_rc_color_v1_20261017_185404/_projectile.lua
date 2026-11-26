@@ -229,7 +229,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_red(hit_side_obj_
             -- projectile_active
             obj_projectile["projectile_active"] = false
             -- block_test
-            local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
+            local block_bool = common_game_scene_test_block(obj_projectile,hurt_side_obj_char)
             -- risk_gauge
             if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
                 hurt_side_obj_char["hurt_state"] = "counter"
@@ -635,7 +635,7 @@ function insert_projectile_game_scene_char_common_RC_shockwave_yellow(hit_side_o
             -- projectile_active
             obj_projectile["projectile_active"] = false
             -- block_test
-            local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
+            local block_bool = common_game_scene_test_block(obj_projectile,hurt_side_obj_char)
             -- risk_gauge
             if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
                 hurt_side_obj_char["hurt_state"] = "counter"

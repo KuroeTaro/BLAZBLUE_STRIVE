@@ -43,7 +43,7 @@ local function install_stubs()
     common_game_scene_get_input_sys_cache_init = function() return function() end end
     common_game_scene_get_input_sys_cache_state_machine = function() return function() end end
     common_game_scene_overdrive_load_camera_shake_anim = function() return {prop="camera_shake_x"}, {prop="camera_shake_y"} end
-    common_game_scene_nil_load_camera_enclose_anim = function() return {prop="camera_enclosing"} end
+    common_game_scene_load_camera_enclose_anim_nil = function() return {prop="camera_enclosing"} end
     -- 前 40 次判定「还在空中」,之后判定落地:把 50..58 的滞空循环和 59 之后的落地分支都跑到
     local ground_checks = 0
     collision_test_char_on_ground = function()

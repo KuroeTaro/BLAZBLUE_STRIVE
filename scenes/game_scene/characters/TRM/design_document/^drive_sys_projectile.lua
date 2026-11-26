@@ -109,7 +109,7 @@ function insert_projectile_game_scene_char_TRM_SP_H_chain(
             obj_projectile["projectile_active"] = false
             obj_projectile["chain_hitted"] = true
             -- block_test
-            local hurt_side_block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
+            local hurt_side_block_bool = common_game_scene_test_block(obj_projectile,hurt_side_obj_char)
             -- risk_gauge
             if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and
             (not hurt_side_block_bool) then
@@ -150,7 +150,7 @@ function insert_projectile_game_scene_char_TRM_SP_H_chain(
     -- camera_animation
     obj_projectile["camera_x_shake_anim"],obj_projectile["camera_y_shake_anim"] =
     common_game_scene_hit_load_camera_shake_anim(0.25,15)
-    obj_projectile["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+    obj_projectile["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
     obj_projectile["enclose_position_offset"] = nil
     -- update
     obj_projectile["update"] = function()

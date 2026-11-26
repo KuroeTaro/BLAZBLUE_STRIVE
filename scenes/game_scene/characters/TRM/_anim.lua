@@ -2043,7 +2043,7 @@ function load_game_scene_anim_char_TRM_2P(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.25,15)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -2270,7 +2270,7 @@ function load_game_scene_anim_char_TRM_6P(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.25,15)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -2525,7 +2525,7 @@ function load_game_scene_anim_char_TRM_5P(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.25,15)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -2754,7 +2754,7 @@ function load_game_scene_anim_char_TRM_2K(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.30,15)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -3014,7 +3014,7 @@ function load_game_scene_anim_char_TRM_6K(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.30,15)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -3297,7 +3297,7 @@ function load_game_scene_anim_char_TRM_5K(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.30,15)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
         -- update
@@ -3561,7 +3561,7 @@ function load_game_scene_anim_char_TRM_2S(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.35,15)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -3851,7 +3851,7 @@ function load_game_scene_anim_char_TRM_6S(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
             common_game_scene_hit_load_camera_shake_anim(0.35,15)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
         -- insert_VFX
@@ -4150,7 +4150,7 @@ function load_game_scene_anim_char_TRM_cS(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.35,15)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
         -- update
@@ -4393,7 +4393,7 @@ function load_game_scene_anim_char_TRM_fS(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.30,15)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -4770,7 +4770,7 @@ function load_game_scene_anim_char_TRM_2Launcher(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.30,15)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -5758,7 +5758,7 @@ function load_game_scene_anim_char_TRM_5Launcher(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.30,15)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- play_SFX
         play_obj_audio(hit_side_obj_char["hit_whiff_SFX"])
         -- visual_front
@@ -6028,7 +6028,7 @@ function load_game_scene_anim_char_TRM_j5P(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.25,15)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -6254,7 +6254,7 @@ function load_game_scene_anim_char_TRM_j2K(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.35,15)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -6495,7 +6495,7 @@ function load_game_scene_anim_char_TRM_j5K(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.30,15)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -6719,7 +6719,7 @@ function load_game_scene_anim_char_TRM_j5S(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.35,15)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -6926,7 +6926,7 @@ function load_game_scene_anim_char_TRM_j4_6Launcher(
         hit_side_obj_char["anchor_pos"] = {300,310}
         -- camera_animation_load
         load_game_scene_anim_char_TRM_j4_6Launcher_camera_shake_anim(hit_side_obj_char,1.2)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -7617,7 +7617,7 @@ function load_game_scene_anim_char_TRM_j5Launcher(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.35,15)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end
@@ -8963,7 +8963,7 @@ function load_game_scene_anim_char_TRM_6SP_S(
         -- camera_animation_load
         hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_hit_load_camera_shake_anim(0.35,10)
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- visual_front
         CHARACTER_VISUAL_FRONT = hit_side
     end

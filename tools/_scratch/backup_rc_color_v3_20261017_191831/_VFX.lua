@@ -3765,7 +3765,7 @@ function insert_VFX_game_scne_stage_dash_cancel_blow(obj_char,x,y,opacity,sx,sy,
     table.insert(obj_char["VFX_common_back_table"],obj_VFX)
 end
 -- GP
-function insert_VFX_game_scene_char_GP(obj_char)
+function insert_VFX_game_scene_char_armor(obj_char)
     -- x_y_z_opacity_sx_sy_r_f
     local obj_VFX = {0,0,0,1,1,1,0,0}
     obj_VFX["life"] = 42

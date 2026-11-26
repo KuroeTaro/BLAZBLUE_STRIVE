@@ -5319,7 +5319,7 @@ function state_gate_game_scene_char_LP_from_throw_success(
         self_side_obj_char["physics_lock"] = false
         self_side_obj_char["camera_x_shake_anim"],self_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_nil_load_camear_shake_anim()
-        self_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        self_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         table.insert(
             obj_stage_main["camera_active_application_table"],
             function()

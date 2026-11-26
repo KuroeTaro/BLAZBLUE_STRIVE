@@ -1,19 +1,11 @@
 -- ease_in
 function draw_char_select_scene_ease_in_0f_36f()
-    -- draw_2d_image_table(
-    --     obj_UI_char_select_scene_start_0f_110f,
-    --     image_table_UI_char_select_scene_start_0_110f
-    -- )
     local image_sprite_sheet = image_sprite_sheet_UI_char_select_scene_start_0_110f
     local obj = obj_UI_char_select_scene_start_0f_110f
     image_sprite_sheet["sprite_batch"]:clear()
     draw_2d_image_sprite_batch(obj,image_sprite_sheet,obj[8])
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     love.graphics.setBlendMode("add")
-    -- draw_2d_image_table(
-    --     obj_UI_char_select_scene_movie_cover,
-    --     image_table_UI_char_select_scene_movie_cover
-    -- )
     image_sprite_sheet = image_sprite_sheet_UI_char_select_scene_movie_cover
     obj = obj_UI_char_select_scene_movie_cover
     image_sprite_sheet["sprite_batch"]:clear()
@@ -23,20 +15,12 @@ function draw_char_select_scene_ease_in_0f_36f()
     draw_solid(obj_UI_char_select_scene_black_solid)
 end
 function draw_char_select_scene_ease_in_36f_40f()
-    -- draw_2d_image_table(
-    --     obj_UI_char_select_scene_start_0f_110f,
-    --     image_table_UI_char_select_scene_start_0_110f
-    -- )
     local image_sprite_sheet = image_sprite_sheet_UI_char_select_scene_start_0_110f
     local obj = obj_UI_char_select_scene_start_0f_110f
     image_sprite_sheet["sprite_batch"]:clear()
     draw_2d_image_sprite_batch(obj,image_sprite_sheet,obj[8])
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     love.graphics.setBlendMode("add")
-    -- draw_2d_image_table(
-    --     obj_UI_char_select_scene_movie_cover,
-    --     image_table_UI_char_select_scene_movie_cover
-    -- )
     image_sprite_sheet = image_sprite_sheet_UI_char_select_scene_movie_cover
     obj = obj_UI_char_select_scene_movie_cover
     image_sprite_sheet["sprite_batch"]:clear()
@@ -45,10 +29,6 @@ function draw_char_select_scene_ease_in_36f_40f()
     love.graphics.setBlendMode("alpha")
 end
 function draw_char_select_scene_ease_in_40f_130f()
-    -- draw_2d_image_table(
-    --     obj_UI_char_select_scene_start_0f_110f,
-    --     image_table_UI_char_select_scene_start_0_110f
-    -- )
     local image_sprite_sheet = image_sprite_sheet_UI_char_select_scene_start_0_110f
     local obj = obj_UI_char_select_scene_start_0f_110f
     image_sprite_sheet["sprite_batch"]:clear()
@@ -79,18 +59,10 @@ function draw_char_select_scene_ease_in_40f_130f()
     image_sprite_sheet["sprite_batch"]:clear()
     draw_2d_image_sprite_batch(obj,image_sprite_sheet,obj[8])
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
-    -- draw_2d_image_table(
-    --     obj_UI_char_select_scene_movie_cover,
-    --     image_table_UI_char_select_scene_movie_cover
-    -- )
     love.graphics.setBlendMode("alpha")
 end
 -- main
 function draw_char_select_scene_main()
-    -- draw_2d_image_table(
-    --     obj_UI_char_select_scene_start_0f_110f,
-    --     image_table_UI_char_select_scene_start_0_110f
-    -- )
     local image_sprite_sheet = image_sprite_sheet_UI_char_select_scene_start_0_110f
     local obj = obj_UI_char_select_scene_start_0f_110f
     image_sprite_sheet["sprite_batch"]:clear()
@@ -116,10 +88,6 @@ function draw_char_select_scene_main()
     draw_char_select_scene_glow(obj_UI_char_select_scene_glow)
     love.graphics.setBlendMode("add")
     draw_2d_image(obj_UI_char_select_scene_ring,image_UI_char_select_scene_ring)
-    -- draw_2d_image_table(
-    --     obj_UI_char_select_scene_movie_cover,
-    --     image_table_UI_char_select_scene_movie_cover
-    -- )
     image_sprite_sheet = image_sprite_sheet_UI_char_select_scene_movie_cover
     obj = obj_UI_char_select_scene_movie_cover
     image_sprite_sheet["sprite_batch"]:clear()
@@ -139,12 +107,12 @@ function draw_char_select_scene_glow(obj,f_shader,r_shader)
     local sx = draw_resolution_correction(obj[5])
     local sy = draw_resolution_correction(obj[6])
     local opacity = obj[4]
-    if opacity == 0 then
-        return
-    end
     local width = love.graphics.getWidth()
     local height = love.graphics.getHeight()
     local alpha_points = {}
+    if opacity == 0 then
+        return
+    end
     for i = 1,#obj["alpha_points"] do
         alpha_points[i] = draw_resolution_correction(obj["alpha_points"][i])
     end
@@ -191,6 +159,12 @@ function draw_char_select_scene_char_select_LR(id)
     local obj_UI_char_select_scene_char_select_text = nil
     local obj_UI_char_select_scene_char_select_char = nil
     local image_UI_char_select_scene_char_select_alpha = nil
+    local x = 0
+    local y = 0
+    local sx = 0
+    local sy = 0
+    local f = 0
+    local opacity = 0
     if id == 1 then
         obj_UI_char_select_scene_char_select = obj_UI_char_select_scene_char_select_left
         obj_UI_char_select_scene_char_select_text = obj_UI_char_select_scene_char_select_text_left
@@ -202,12 +176,12 @@ function draw_char_select_scene_char_select_LR(id)
         obj_UI_char_select_scene_char_select_char = obj_UI_char_select_scene_char_select_char_right
         image_UI_char_select_scene_char_select_alpha = image_UI_char_select_scene_char_select_right_alpha
     end
-    local x = draw_resolution_correction(obj_UI_char_select_scene_char_select[1])
-    local y = draw_resolution_correction(obj_UI_char_select_scene_char_select[2])
-    local sx = draw_resolution_correction(obj_UI_char_select_scene_char_select[5])
-    local sy = draw_resolution_correction(obj_UI_char_select_scene_char_select[6])
-    local f = obj_UI_char_select_scene_char_select[8]
-    local opacity = obj_UI_char_select_scene_char_select[4]
+    x = draw_resolution_correction(obj_UI_char_select_scene_char_select[1])
+    y = draw_resolution_correction(obj_UI_char_select_scene_char_select[2])
+    sx = draw_resolution_correction(obj_UI_char_select_scene_char_select[5])
+    sy = draw_resolution_correction(obj_UI_char_select_scene_char_select[6])
+    f = obj_UI_char_select_scene_char_select[8]
+    opacity = obj_UI_char_select_scene_char_select[4]
     if opacity == 0 then
         return
     end

@@ -21,9 +21,7 @@ function load_game_scene_common_texture()
     DRAW_CHARACTER_CANVAS = warm_up_record_canvas(width,height)
     DRAW_SHADOW_CANVAS = warm_up_record_canvas(width,height)
     DRAW_VFX_PARTICAL_3D_CANVAS = warm_up_record_canvas(width,height)
-    -- 场景的 canvas(见 stage/<场景名>.lua)
     load_game_scene_texture_stage()
-    -- 角色的程序化 VFX 贴图(load_game_scene_texture_LP / RP)在 order_load_game_scene_common 里单独一步
 end
 function load_game_scene_common_config()
     load_game_scene_config_char_LP()

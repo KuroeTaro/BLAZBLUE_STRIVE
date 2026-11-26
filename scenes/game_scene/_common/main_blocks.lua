@@ -9,10 +9,10 @@ function update_game_scene_training_before_ease_in()
         )
         if not TRAINING_MODE_CONFIG["announcer"] then
             current_update_block = update_game_scene_training_black_solid_ease_in
-            common_game_scene_toggle_dynamic_HUD(1)
+            common_game_scene_HUD_toggle_dynamic(1)
         else
             current_update_block = update_game_scene_training_annoucer_ease_in
-            common_game_scene_toggle_ease_in(1)
+            common_game_scene_HUD_toggle_ease_in(1)
             play_obj_audio(audio_SFX_game_scene_common["annoucer_ease_in"])
         end
     end
@@ -120,8 +120,8 @@ function update_game_scene_training_annoucer_ease_in()
         obj_char_game_scene_char_RP["input_sys_state_negative_edge"] = "load" -- none_save_load
         update_game_scene_training_main()
         -- HUD
-        common_game_scene_toggle_dynamic_HUD(1)
-        common_game_scene_toggle_ease_in(0)
+        common_game_scene_HUD_toggle_dynamic(1)
+        common_game_scene_HUD_toggle_ease_in(0)
         common_game_scene_HUD_timer_reset()
         obj_HUD_game_scene_timer["state"] = "off"
     end

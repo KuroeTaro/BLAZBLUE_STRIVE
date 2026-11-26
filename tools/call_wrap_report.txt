@@ -460,7 +460,7 @@ D1 明细：单行放得下却换了行（应合并）（1465 处）
   scenes/game_scene/_common/common_functions.lua:51  参=2  自身=102  物理行=65  形态=OCG
       load_game_scene_stage_apply_wallbreak_start_init(hit_side_obj_char,hurt_side_obj_char)
   scenes/game_scene/_common/common_functions.lua:411  参=4  自身=118  物理行=74  形态=OCG
-      common_game_scene_strike_hurt_function_GP_hurt(hit_side_obj_char,hurt_side_obj_char,obj_stage_main,obj_camera)
+      common_game_scene_strike_hurt_function_common_armor(hit_side_obj_char,hurt_side_obj_char,obj_stage_main,obj_camera)
   scenes/game_scene/_common/common_functions.lua:449  参=2  自身=104  物理行=76  形态=OCG
       init_point_linear_anim_without(obj_camera,anim_stage_point_linear_game_scene_camera_shake_x)
   scenes/game_scene/_common/common_functions.lua:452  参=2  自身=104  物理行=76  形态=OCG
@@ -3251,7 +3251,7 @@ D8a 明细：长字符串字面量 / 称名过长（6 处）
       single:28
   common_game_scene_check_jump_direction               总   25 换行   0  -
       single:25
-  common_game_scene_nil_load_camera_enclose_anim       总   25 换行   0  -
+  common_game_scene_load_camera_enclose_anim_nil       总   25 换行   0  -
       single:25
   load_game_scene_anim_char_TRM_7_8_9_pre_jump         总   25 换行   0  -
       single:25

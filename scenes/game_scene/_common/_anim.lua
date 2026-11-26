@@ -4939,7 +4939,7 @@ function load_game_scene_anim_char_common_burst_burst(
         -- camera_animation_load
         self_side_obj_char["camera_x_shake_anim"],self_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_overdrive_load_camera_shake_anim(2.0)
-        self_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        self_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- camera_animation_application
         table.insert(
             obj_stage_game_scene_main["camera_active_application_table"],
@@ -5193,7 +5193,7 @@ function load_game_scene_anim_char_common_burst_overdrive(
         -- camera_animation_load
         self_side_obj_char["camera_x_shake_anim"],self_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_overdrive_load_camera_shake_anim(2.0)
-        self_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        self_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- load_game_scene_anim_char_TRM_4_6Launcher_camera_enclose_anim(self_side_obj_char)
         -- self_side_obj_char["enclose_position_offset"] = {
         --     self_side_obj_char["x"] - obj_camera["3d_pos_x"],
@@ -5747,7 +5747,7 @@ function load_game_scene_anim_char_common_burst_RC_blue(
         -- camera_animation_load
         self_side_obj_char["camera_x_shake_anim"],self_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_overdrive_load_camera_shake_anim(0.0)
-        self_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        self_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- camera_animation_application
         table.insert(
             obj_stage_game_scene_main["camera_active_application_table"],
@@ -6014,7 +6014,7 @@ function load_game_scene_anim_char_common_burst_RC_purple(
         -- camera_animation_load
         self_side_obj_char["camera_x_shake_anim"],self_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_overdrive_load_camera_shake_anim(0.0)
-        self_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        self_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         -- camera_animation_application
         table.insert(
             obj_stage_game_scene_main["camera_active_application_table"],

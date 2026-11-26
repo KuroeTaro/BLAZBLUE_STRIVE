@@ -3596,7 +3596,7 @@ function state_gate_game_scene_char_RP_sub_from_FD_block(
         sprite_sheet,height = "4_stand_block_high","stand"
     end
     -- 没有继续 FD 的输入:进入 FD 收招
-    if not common_game_scene_FD_block_test(
+    if not common_game_scene_test_FD_block(
         self_side_input,self_side_obj_char,self_side_obj_char
     ) then
         self_side_obj_char["character_animation"] =
@@ -3744,7 +3744,7 @@ function state_gate_game_scene_char_RP_common_ground_to_normal_move(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
     -- _active_FD_block
-    if common_game_scene_FD_block_test(self_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if common_game_scene_test_FD_block(self_side_input,self_side_obj_char,opponent_side_obj_char) then
         state_gate_game_scene_char_RP_common_to_active_FD_block(
             self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
         )
@@ -3942,7 +3942,7 @@ function state_gate_game_scene_char_RP_common_ground_to_normal_move_hold_ver(
     self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
 )
     -- _active_FD_block
-    if common_game_scene_FD_block_test(self_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if common_game_scene_test_FD_block(self_side_input,self_side_obj_char,opponent_side_obj_char) then
         state_gate_game_scene_char_RP_common_to_active_FD_block(
             self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
         )
@@ -4498,7 +4498,7 @@ function state_gate_game_scene_char_RP_common_air_to_normal_move(
 )
     local direction_input_true_table = {[4] = true,[6] = true,[7] = true,[9] = true}
     -- _active_FD_block
-    if common_game_scene_FD_block_test(self_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if common_game_scene_test_FD_block(self_side_input,self_side_obj_char,opponent_side_obj_char) then
         state_gate_game_scene_char_RP_common_to_active_FD_block(
             self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
         )
@@ -4591,7 +4591,7 @@ function state_gate_game_scene_char_RP_common_air_to_normal_move_hold_ver(
 )
     local direction_input_true_table = {[4] = true,[6] = true,[7] = true,[9] = true}
     -- _active_FD_block
-    if common_game_scene_FD_block_test(self_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if common_game_scene_test_FD_block(self_side_input,self_side_obj_char,opponent_side_obj_char) then
         state_gate_game_scene_char_RP_common_to_active_FD_block(
             self_side_input,opponent_side_input,self_side_obj_char,opponent_side_obj_char
         )
@@ -5246,7 +5246,7 @@ function state_gate_game_scene_char_RP_from_active_FD_block(
         return true
     end
     -- idle_state_gate
-    if not common_game_scene_FD_block_test(self_side_input,self_side_obj_char,opponent_side_obj_char) then
+    if not common_game_scene_test_FD_block(self_side_input,self_side_obj_char,opponent_side_obj_char) then
         self_side_obj_char["character_animation"] =
         load_game_scene_anim_char_common_active_FD_block_to_idle(
             self_side_obj_char,self_side_obj_char["sprite_sheet"],self_side_obj_char["height"]
@@ -5586,7 +5586,7 @@ function state_gate_game_scene_char_RP_from_throw_success(
         self_side_obj_char["physics_lock"] = false
         self_side_obj_char["camera_x_shake_anim"],self_side_obj_char["camera_y_shake_anim"] =
         common_game_scene_nil_load_camear_shake_anim()
-        self_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        self_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
         table.insert(
             obj_stage_main["camera_active_application_table"],
             function()

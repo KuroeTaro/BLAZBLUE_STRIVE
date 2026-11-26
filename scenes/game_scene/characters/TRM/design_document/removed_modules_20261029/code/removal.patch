@@ -455,7 +455,7 @@ index b923e5e..51f2998 100644
 -        -- camera_animation_load
 -        hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
 -        common_game_scene_hit_load_camera_shake_anim(0.25,15)
--        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
 -        -- visual_front
 -        CHARACTER_VISUAL_FRONT = hit_side
 -    end
@@ -713,7 +713,7 @@ index b923e5e..51f2998 100644
 -        -- camera_animation_load
 -        hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
 -        common_game_scene_hit_load_camera_shake_anim(0.25,15)
--        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
 -        -- visual_front
 -        CHARACTER_VISUAL_FRONT = hit_side
 -    end
@@ -938,7 +938,7 @@ index b923e5e..51f2998 100644
 -        -- camera_animation_load
 -        hit_side_obj_char["camera_x_shake_anim"],hit_side_obj_char["camera_y_shake_anim"] =
 -        common_game_scene_hit_load_camera_shake_anim(0.25,15)
--        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
 -        -- visual_front
 -        CHARACTER_VISUAL_FRONT = hit_side
 -    end

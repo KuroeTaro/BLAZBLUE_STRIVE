@@ -58,12 +58,12 @@ function draw_game_scene_main()
     image_sprite_sheet["sprite_batch"]:clear()
     local L_character = obj_char_game_scene_char_LP
     local R_character = obj_char_game_scene_char_RP
-    -- round_timer
-    draw_game_scene_add_to_sprite_batch_round_timer(obj_HUD_game_scene_timer,image_sprite_sheet)
     -- match_point
     draw_2d_image_sprite_batch(obj_HUD_game_scene_match_point_LP,image_sprite_sheet,"HUD_match_point")
     draw_2d_image_sprite_batch(obj_HUD_game_scene_match_point_RP,image_sprite_sheet,"HUD_match_point")
-    -- win_mark
+    -- round_timer
+    draw_game_scene_add_to_sprite_batch_round_timer(obj_HUD_game_scene_timer,image_sprite_sheet)
+    -- round_win_mark
     draw_game_scene_add_to_sprite_batch_round_win_marks(
         obj_HUD_game_scene_win_marks_LP,image_sprite_sheet,"HUD_win_mark",WIN_MARK["L"]
     )
@@ -71,45 +71,45 @@ function draw_game_scene_main()
         obj_HUD_game_scene_win_marks_RP,image_sprite_sheet,"HUD_win_mark",WIN_MARK["R"]
     )
     -- health
-    draw_game_scene_add_to_sprite_batch_bars(
+    draw_game_scene_add_to_sprite_batch_linear_bars(
         obj_HUD_game_scene_health_bar_LP,image_sprite_sheet,"HUD_health_bar",
         L_character["health_gauge"][1]/L_character["health_gauge"][3]
     )
-    draw_game_scene_add_to_sprite_batch_bars(
+    draw_game_scene_add_to_sprite_batch_linear_bars(
         obj_HUD_game_scene_health_bar_RP,image_sprite_sheet,"HUD_health_bar",
         R_character["health_gauge"][1]/R_character["health_gauge"][3]
     )
-    draw_game_scene_add_to_sprite_batch_bars(
+    draw_game_scene_add_to_sprite_batch_linear_bars(
         obj_HUD_game_scene_health_bar_LP_fade,image_sprite_sheet,"HUD_health_bar",
         L_character["health_gauge"][2]/L_character["health_gauge"][3]
     )
-    draw_game_scene_add_to_sprite_batch_bars(
+    draw_game_scene_add_to_sprite_batch_linear_bars(
         obj_HUD_game_scene_health_bar_RP_fade,image_sprite_sheet,"HUD_health_bar",
         R_character["health_gauge"][2]/R_character["health_gauge"][3]
     )
     -- ability
-    draw_game_scene_add_to_sprite_batch_bars(
+    draw_game_scene_add_to_sprite_batch_linear_bars(
         obj_HUD_game_scene_ability_bar_LP,image_sprite_sheet,"HUD_ability_bar",
         L_character["ability_gauge"][1]/L_character["ability_gauge"][2]
     )
-    draw_game_scene_add_to_sprite_batch_bars(
+    draw_game_scene_add_to_sprite_batch_linear_bars(
         obj_HUD_game_scene_ability_bar_RP,image_sprite_sheet,"HUD_ability_bar",
         R_character["ability_gauge"][1]/R_character["ability_gauge"][2]
     )
     -- heat
-    draw_game_scene_add_to_sprite_batch_bars(
+    draw_game_scene_add_to_sprite_batch_linear_bars(
         obj_HUD_game_scene_heat_bar_LP,image_sprite_sheet,"HUD_heat_bar",
         L_character["heat_gauge"][1]/L_character["heat_gauge"][2]
     )
-    draw_game_scene_add_to_sprite_batch_bars(
+    draw_game_scene_add_to_sprite_batch_linear_bars(
         obj_HUD_game_scene_heat_bar_RP,image_sprite_sheet,"HUD_heat_bar",
         R_character["heat_gauge"][1]/R_character["heat_gauge"][2]
     )
-    draw_game_scene_add_to_sprite_batch_heat_bar_extra(
+    draw_game_scene_add_to_sprite_batch_heat_mark(
         obj_HUD_game_scene_heat_bar_LP,image_sprite_sheet,"HUD_heat_mark",
         L_character["heat_gauge"][1]*4/L_character["heat_gauge"][2]
     )
-    draw_game_scene_add_to_sprite_batch_heat_bar_extra(
+    draw_game_scene_add_to_sprite_batch_heat_mark(
         obj_HUD_game_scene_heat_bar_RP,image_sprite_sheet,"HUD_heat_mark",
         R_character["heat_gauge"][1]*4/R_character["heat_gauge"][2]
     )
@@ -121,6 +121,20 @@ function draw_game_scene_main()
     draw_game_scene_add_to_sprite_batch_overdrive_pie(
         obj_HUD_game_scene_overdrive_pie_RP,image_sprite_sheet,
         R_character["overdrive_gauge"][1]*6/R_character["overdrive_gauge"][2]
+    )
+    -- overdrive_text
+    draw_2d_image_sprite_batch(
+        obj_HUD_game_scene_overdrive_text_LP,image_sprite_sheet,"HUD_overdrive_text"
+    )
+    draw_2d_image_sprite_batch(
+        obj_HUD_game_scene_overdrive_text_RP,image_sprite_sheet,"HUD_overdrive_text"
+    )
+    -- overdrive_timer
+    draw_game_scene_add_to_sprite_batch_overdrive_timer(
+        obj_HUD_game_scene_overdrive_timer_LP,image_sprite_sheet,L_character["overdrive_timer"]
+    )
+    draw_game_scene_add_to_sprite_batch_overdrive_timer(
+        obj_HUD_game_scene_overdrive_timer_RP,image_sprite_sheet,R_character["overdrive_timer"]
     )
     -- risk
     draw_game_scene_add_to_sprite_batch_risk_bars(
@@ -134,16 +148,6 @@ function draw_game_scene_main()
     -- positive_bonus_text
     draw_2d_image_sprite_batch(obj_HUD_game_scene_positive_bonus_text_LP,image_sprite_sheet,"HUD_positive_bouns_text_LP")
     draw_2d_image_sprite_batch(obj_HUD_game_scene_positive_bonus_text_RP,image_sprite_sheet,"HUD_positive_bouns_text_RP")
-    -- overdrive_text
-    draw_2d_image_sprite_batch(obj_HUD_game_scene_overdrive_text_LP,image_sprite_sheet,"HUD_overdrive_text")
-    draw_2d_image_sprite_batch(obj_HUD_game_scene_overdrive_text_RP,image_sprite_sheet,"HUD_overdrive_text")
-    -- overdrive_timer
-    draw_game_scene_add_to_sprite_batch_overdrive_timer(
-        obj_HUD_game_scene_overdrive_timer_LP,image_sprite_sheet,L_character["overdrive_timer"]
-    )
-    draw_game_scene_add_to_sprite_batch_overdrive_timer(
-        obj_HUD_game_scene_overdrive_timer_RP,image_sprite_sheet,R_character["overdrive_timer"]
-    )
     love.graphics.draw(image_sprite_sheet["sprite_batch"])
     -- VFX_HUD
     draw_game_scene_char_LP_VFX_HUD()
@@ -206,121 +210,9 @@ function draw_game_scene_main()
     draw_solid(obj_UI_game_scene_black_solid)
 end
 -- x_y_z_opacity_sx_sy_r_f
-function draw_game_scene_add_to_sprite_batch_bars(
-    obj,image_sprite_sheet,quad_name,
-    percentage
+function draw_game_scene_add_to_sprite_batch_round_timer(
+    obj,image_sprite_sheet
 )
-    local x = draw_resolution_correction(obj[1])
-    local y = draw_resolution_correction(obj[2])
-    local r = obj[7]
-    local sx = draw_resolution_correction(obj[5])
-    local sy = draw_resolution_correction(obj[6])
-    local opacity = obj[4]
-    local frame = image_sprite_sheet["frames"][quad_name]
-    local quad = love.graphics.newQuad(frame[1],frame[2],frame[3]*percentage,frame[4],frame[5],frame[6])
-    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
-    image_sprite_sheet["sprite_batch"]:add(quad,x,y,r,sx,sy)
-    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
-end
-function draw_game_scene_add_to_sprite_batch_heat_bar_extra(
-    obj,image_sprite_sheet,quad_name,
-    mark_value
-)
-    local x = draw_resolution_correction(obj[1])
-    local y = draw_resolution_correction(obj[2])
-    local r = obj[7]
-    local sx = draw_resolution_correction(obj[5])
-    local sy = draw_resolution_correction(obj[6])
-    local opacity = obj[4]
-    x = x + 97*sx
-    y = y + 11*sy
-    local frame = image_sprite_sheet["frames"][quad_name]
-    local quad = love.graphics.newQuad(frame[1],frame[2],frame[3],frame[4],frame[5],frame[6])
-    local offset_counter = 0
-    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
-    for i = 1,3,1 do
-        if mark_value >= 1 then
-            image_sprite_sheet["sprite_batch"]:add(quad,x + offset_counter*97*sx,y,r,-sx,sy)
-            mark_value = mark_value - 1
-            offset_counter = offset_counter + 1
-        else
-            break
-        end
-    end
-    if mark_value >= 1 then
-        x = draw_resolution_correction(obj[1])
-        y = draw_resolution_correction(obj[2])
-        image_sprite_sheet["sprite_batch"]:add(quad,x + 393*sx,y + 6*sy,r,-sx,sy)
-    end
-    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
-end
-function draw_game_scene_add_to_sprite_batch_risk_bars(
-    obj,image_sprite_sheet,quad_name,
-    risk_value
-)
-    local x = draw_resolution_correction(obj[1])
-    local y = draw_resolution_correction(obj[2])
-    local r = obj[7]
-    local sx = draw_resolution_correction(obj[5])
-    local sy = draw_resolution_correction(obj[6])
-    local opacity = obj[4]
-    local frame = image_sprite_sheet["frames"][quad_name]
-    local quad = love.graphics.newQuad(frame[1],frame[2],frame[3],frame[4],frame[5],frame[6])
-    local offset_counter = 0
-    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
-    for i = 1,3,1 do
-        if risk_value >= 1 then
-            image_sprite_sheet["sprite_batch"]:add(quad,x - offset_counter*30*sx,y,r,sx,sy)
-            risk_value = risk_value - 1
-            offset_counter = offset_counter + 1
-        else
-            image_sprite_sheet["sprite_batch"]:setColor(1,1,1,risk_value*opacity)
-            image_sprite_sheet["sprite_batch"]:add(quad,x - offset_counter*30*sx,y,r,sx,sy)
-            break
-        end
-    end
-    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
-end
-function draw_game_scene_add_to_sprite_batch_overdrive_pie(
-    obj,image_sprite_sheet,
-    overdrive_value
-)
-    local x = draw_resolution_correction(obj[1])
-    local y = draw_resolution_correction(obj[2])
-    local r = obj[7]
-    local sx = draw_resolution_correction(obj[5])
-    local sy = draw_resolution_correction(obj[6])
-    local opacity = obj[4]
-    local quad_name_table = {
-        "HUD_OD_pie_0",
-        "HUD_OD_pie_1",
-        "HUD_OD_pie_2",
-        "HUD_OD_pie_3",
-        "HUD_OD_pie_4",
-        "HUD_OD_pie_5"
-    }
-    local frames = {}
-    for i = 1,6,1 do
-        frames[i] = image_sprite_sheet["frames"][quad_name_table[i]]
-    end
-    local quads = {}
-    for i = 1,6,1 do
-        quads[i] = love.graphics.newQuad(frames[i][1],frames[i][2],frames[i][3],frames[i][4],frames[i][5],frames[i][6])
-    end
-    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
-    for i = 1,6,1 do
-        if overdrive_value >= 1 then
-            image_sprite_sheet["sprite_batch"]:add(quads[i],x,y,r,sx,sy)
-            overdrive_value = overdrive_value - 1
-        else
-            image_sprite_sheet["sprite_batch"]:setColor(1,1,1,overdrive_value*opacity)
-            image_sprite_sheet["sprite_batch"]:add(quads[i],x,y,r,sx,sy)
-            break
-        end
-    end
-    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
-end
-function draw_game_scene_add_to_sprite_batch_round_timer(obj,image_sprite_sheet)
     local x = draw_resolution_correction(obj[1])
     local y = draw_resolution_correction(obj[2])
     local r = obj[7]
@@ -386,6 +278,93 @@ function draw_game_scene_add_to_sprite_batch_round_win_marks(
     end
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
 end
+function draw_game_scene_add_to_sprite_batch_linear_bars(
+    obj,image_sprite_sheet,quad_name,
+    percentage
+)
+    local x = draw_resolution_correction(obj[1])
+    local y = draw_resolution_correction(obj[2])
+    local r = obj[7]
+    local sx = draw_resolution_correction(obj[5])
+    local sy = draw_resolution_correction(obj[6])
+    local opacity = obj[4]
+    local frame = image_sprite_sheet["frames"][quad_name]
+    local quad = love.graphics.newQuad(frame[1],frame[2],frame[3]*percentage,frame[4],frame[5],frame[6])
+    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
+    image_sprite_sheet["sprite_batch"]:add(quad,x,y,r,sx,sy)
+    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
+end
+function draw_game_scene_add_to_sprite_batch_heat_mark(
+    obj,image_sprite_sheet,quad_name,
+    mark_value
+)
+    local x = draw_resolution_correction(obj[1])
+    local y = draw_resolution_correction(obj[2])
+    local r = obj[7]
+    local sx = draw_resolution_correction(obj[5])
+    local sy = draw_resolution_correction(obj[6])
+    local opacity = obj[4]
+    x = x + 97*sx
+    y = y + 11*sy
+    local frame = image_sprite_sheet["frames"][quad_name]
+    local quad = love.graphics.newQuad(frame[1],frame[2],frame[3],frame[4],frame[5],frame[6])
+    local offset_counter = 0
+    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
+    for i = 1,3,1 do
+        if mark_value >= 1 then
+            image_sprite_sheet["sprite_batch"]:add(quad,x + offset_counter*97*sx,y,r,-sx,sy)
+            mark_value = mark_value - 1
+            offset_counter = offset_counter + 1
+        else
+            break
+        end
+    end
+    if mark_value >= 1 then
+        x = draw_resolution_correction(obj[1])
+        y = draw_resolution_correction(obj[2])
+        image_sprite_sheet["sprite_batch"]:add(quad,x + 393*sx,y + 6*sy,r,-sx,sy)
+    end
+    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
+end
+function draw_game_scene_add_to_sprite_batch_overdrive_pie(
+    obj,image_sprite_sheet,
+    overdrive_value
+)
+    local x = draw_resolution_correction(obj[1])
+    local y = draw_resolution_correction(obj[2])
+    local r = obj[7]
+    local sx = draw_resolution_correction(obj[5])
+    local sy = draw_resolution_correction(obj[6])
+    local opacity = obj[4]
+    local quad_name_table = {
+        "HUD_OD_pie_0",
+        "HUD_OD_pie_1",
+        "HUD_OD_pie_2",
+        "HUD_OD_pie_3",
+        "HUD_OD_pie_4",
+        "HUD_OD_pie_5"
+    }
+    local frames = {}
+    for i = 1,6,1 do
+        frames[i] = image_sprite_sheet["frames"][quad_name_table[i]]
+    end
+    local quads = {}
+    for i = 1,6,1 do
+        quads[i] = love.graphics.newQuad(frames[i][1],frames[i][2],frames[i][3],frames[i][4],frames[i][5],frames[i][6])
+    end
+    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
+    for i = 1,6,1 do
+        if overdrive_value >= 1 then
+            image_sprite_sheet["sprite_batch"]:add(quads[i],x,y,r,sx,sy)
+            overdrive_value = overdrive_value - 1
+        else
+            image_sprite_sheet["sprite_batch"]:setColor(1,1,1,overdrive_value*opacity)
+            image_sprite_sheet["sprite_batch"]:add(quads[i],x,y,r,sx,sy)
+            break
+        end
+    end
+    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
+end
 function draw_game_scene_add_to_sprite_batch_overdrive_timer(
     obj,image_sprite_sheet,time
 )
@@ -426,6 +405,33 @@ function draw_game_scene_add_to_sprite_batch_overdrive_timer(
         )
     end
     image_sprite_sheet["sprite_batch"]:add(quads[11],x + draw_resolution_correction(49),y,r,sx,sy)
+    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
+end
+function draw_game_scene_add_to_sprite_batch_risk_bars(
+    obj,image_sprite_sheet,quad_name,
+    risk_value
+)
+    local x = draw_resolution_correction(obj[1])
+    local y = draw_resolution_correction(obj[2])
+    local r = obj[7]
+    local sx = draw_resolution_correction(obj[5])
+    local sy = draw_resolution_correction(obj[6])
+    local opacity = obj[4]
+    local frame = image_sprite_sheet["frames"][quad_name]
+    local quad = love.graphics.newQuad(frame[1],frame[2],frame[3],frame[4],frame[5],frame[6])
+    local offset_counter = 0
+    image_sprite_sheet["sprite_batch"]:setColor(1,1,1,opacity)
+    for i = 1,3,1 do
+        if risk_value >= 1 then
+            image_sprite_sheet["sprite_batch"]:add(quad,x - offset_counter*30*sx,y,r,sx,sy)
+            risk_value = risk_value - 1
+            offset_counter = offset_counter + 1
+        else
+            image_sprite_sheet["sprite_batch"]:setColor(1,1,1,risk_value*opacity)
+            image_sprite_sheet["sprite_batch"]:add(quad,x - offset_counter*30*sx,y,r,sx,sy)
+            break
+        end
+    end
     image_sprite_sheet["sprite_batch"]:setColor(1,1,1,1)
 end
 function draw_game_scene_act_common(obj,image_sprite_sheet)

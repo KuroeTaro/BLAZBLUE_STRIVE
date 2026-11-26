@@ -9,7 +9,7 @@ function common_game_scene_HUD_timer_reset()
         obj_HUD_game_scene_timer["state"] = "on"
     end
 end
-function common_game_scene_toggle_dynamic_HUD(toggle_value)
+function common_game_scene_HUD_toggle_dynamic(toggle_value)
     obj_HUD_game_scene_timer[4] = toggle_value
     obj_HUD_game_scene_win_marks_LP[4] = toggle_value
     obj_HUD_game_scene_win_marks_RP[4] = toggle_value
@@ -31,13 +31,30 @@ function common_game_scene_toggle_dynamic_HUD(toggle_value)
     obj_HUD_game_scene_risk_RP[4] = toggle_value
     obj_HUD_game_scene_background_gauge[4] = toggle_value
 end
-function common_game_scene_toggle_ease_in(toggle_value)
+function common_game_scene_HUD_toggle_ease_in(toggle_value)
     obj_annoucer_game_scene_act_common[4] = toggle_value
     obj_annoucer_game_scene_act_num[4] = toggle_value
     obj_HUD_game_scene_ease_in[4] = toggle_value
     obj_annoucer_game_scene_lets_dance[4] = toggle_value
 end
 -- wallbreak/wallstick
+function common_game_scene_test_wallbreak(hurt_side_obj_char,wallhurt_wallstick_on_side_cache)
+    local collision_side = 0
+    if hurt_side_obj_char["collision_move_available"][1] == 0 then
+        collision_side = -1
+    elseif hurt_side_obj_char["collision_move_available"][2] == 0 then
+        collision_side = 1
+    end
+    if collision_side == 0 then
+        return 0
+    end
+    if (wallhurt_wallstick_on_side_cache ~= 0 and hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"])
+    or (hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"])
+    then
+        return collision_side
+    end
+    return 0
+end
 function common_game_scene_apply_positive_bonus(obj_char)
     obj_char["positive_bonus"] = true
     obj_char["positive_bonus_countdown"] = 300
@@ -57,36 +74,21 @@ function common_game_scene_apply_wallbreak_damage(obj_char)
     damage = math.max(obj_char["health_gauge"][2]*0.03,damage)
     obj_char["health_gauge"][1] = math.max(obj_char["health_gauge"][1] - damage,0)
 end
-function common_game_scene_test_and_apply_wallbreak(
-    hit_side_obj_char,hurt_side_obj_char,wallhurt_wallstick_on_side_cache
-)
-    local collision_side = false
-    if hurt_side_obj_char["collision_move_available"][1] == 0 then
-        collision_side = -1
-    elseif hurt_side_obj_char["collision_move_available"][2] == 0 then
-        collision_side = 1
-    end
-    if not collision_side then
-        return
-    end
-    if (wallhurt_wallstick_on_side_cache ~= 0 and hurt_side_obj_char["wallhurt_wallbreakable_with_wallstick"])
-    or (hurt_side_obj_char["wallhurt_wallbreakable_without_wallstick"])
-    then
-        -- apply_extra_wallbreak_health_damage_and_knockout_special
-        hurt_side_obj_char["wallhurt_wallstick_on_side"] = collision_side
-        table.insert(
-            obj_stage_game_scene_main["wallbreak_active_application_table"],
-            function()
-                -- wallbreak_damage
-                common_game_scene_apply_wallbreak_damage(hurt_side_obj_char)
-                -- positive_bonus
-                common_game_scene_apply_positive_bonus(hit_side_obj_char)
-                load_game_scene_stage_apply_wallbreak_start_init(
-                    hit_side_obj_char,hurt_side_obj_char
-                )
-            end
-        )
-    end
+function common_game_scene_apply_wallbreak(hit_side_obj_char,hurt_side_obj_char,wallbreak_side)
+    -- apply_extra_wallbreak_health_damage_and_knockout_special
+    hurt_side_obj_char["wallhurt_wallstick_on_side"] = wallbreak_side
+    table.insert(
+        obj_stage_game_scene_main["wallbreak_active_application_table"],
+        function()
+            -- wallbreak_damage
+            common_game_scene_apply_wallbreak_damage(hurt_side_obj_char)
+            -- positive_bonus
+            common_game_scene_apply_positive_bonus(hit_side_obj_char)
+            load_game_scene_stage_apply_wallbreak_start_init(
+                hit_side_obj_char,hurt_side_obj_char
+            )
+        end
+    )
 end
 -- side_get
 function common_game_scene_get_pushbox(side)
@@ -210,8 +212,8 @@ function common_game_scene_get_input_sys_cache_negative_edge_init(side)
     }
     return side_table[side]
 end
--- set
-function common_game_scene_set_FD_block_animation(hit_obj,hurt_obj)
+-- FD_animation
+function common_game_scene_init_FD_block_animation(hit_obj,hurt_obj)
     local source_block_anim = hurt_obj["character_animation"]
     local final_block_anim = hurt_obj["character_animation"]
     if source_block_anim["block_type"] == "normal" then
@@ -316,7 +318,7 @@ function common_game_scene_check_crouch_direction(obj_char)
         obj_char["direction_input"] == 3
     )
 end
-function common_game_scene_block_test(hit_obj,hurt_side_obj_char)
+function common_game_scene_test_block(hit_obj,hurt_side_obj_char)
     -- block_test
     local block_bool = false
     local block_direction = hurt_side_obj_char["direction_input"]
@@ -381,7 +383,7 @@ function common_game_scene_block_test(hit_obj,hurt_side_obj_char)
     end
     return block_bool
 end
-function common_game_scene_FD_block_test(hit_side_input,hit_side_obj_char,hurt_side_obj_char)
+function common_game_scene_test_FD_block(hit_side_input,hit_side_obj_char,hurt_side_obj_char)
     local FD_input = 
         test_input_sys_press_or_hold(hit_side_input["correction_left"]) 
         or test_input_sys_press_or_hold(hit_side_input["correction_right"])
@@ -405,7 +407,7 @@ function common_game_scene_strike_hit_function(hit_side_obj_char,hurt_side_obj_c
     -- frame_data
     hit_side_obj_char["last_hitstop_frame"] = 0
     -- block_test
-    local block_bool = common_game_scene_block_test(hit_side_obj_char,hurt_side_obj_char)
+    local block_bool = common_game_scene_test_block(hit_side_obj_char,hurt_side_obj_char)
     -- risk_gauge
     if hurt_side_obj_char["risk_gauge"][1] >= hurt_side_obj_char["risk_gauge"][2] and (not block_bool) then
         -- hit_side
@@ -447,7 +449,7 @@ function common_game_scene_strike_hurt_function(hit_side_obj_char,hurt_side_obj_
     -- state
     hurt_side_obj_char["physics_lock"] = true
     -- block_test
-    local block_bool = common_game_scene_block_test(hit_side_obj_char,hurt_side_obj_char)
+    local block_bool = common_game_scene_test_block(hit_side_obj_char,hurt_side_obj_char)
     if hurt_side_obj_char["height"] ~= "air" and block_bool then
         if common_game_scene_check_crouch_direction(hurt_side_obj_char) then
             hurt_side_obj_char["height"] = "crouch"
@@ -467,7 +469,7 @@ function common_game_scene_strike_hurt_function(hit_side_obj_char,hurt_side_obj_
     -- GP
     elseif hurt_side_obj_char["hurt_state"] == "GP" then -- idle_unblock_punish_counter_GP_parry
         -- insert_GP
-        common_game_scene_strike_hurt_function_GP_hurt(
+        common_game_scene_strike_hurt_function_common_armor(
             hit_side_obj_char,hurt_side_obj_char,obj_stage_main,obj_camera
         )
     -- parry
@@ -484,9 +486,14 @@ function common_game_scene_strike_hurt_function(hit_side_obj_char,hurt_side_obj_
         )
     end
     -- wallbreak_test_and_apply
-    common_game_scene_test_and_apply_wallbreak(
-        hit_side_obj_char,hurt_side_obj_char,wallhurt_wallstick_on_side_cache
+    local wallbreak_side = common_game_scene_test_wallbreak(
+        hurt_side_obj_char,wallhurt_wallstick_on_side_cache
     )
+    if wallbreak_side ~= 0 then
+        common_game_scene_apply_wallbreak(
+            hit_side_obj_char,hurt_side_obj_char,wallbreak_side
+        )
+    end
 end
 function common_game_scene_strike_hurt_function_common_block(
     hit_side_obj_char,hurt_side_obj_char,obj_stage_main,obj_camera
@@ -545,12 +552,12 @@ function common_game_scene_strike_hurt_function_common_block(
             hurt_side_obj_char["FD_block_state_cache"] = true
             hurt_side_obj_char["FD_block_height_cache"] = hurt_side_obj_char["height"]
             hurt_side_obj_char["character_animation"] = hit_side_obj_char["stand_block_animation"]
-            common_game_scene_set_FD_block_animation(hit_side_obj_char,hurt_side_obj_char)
+            common_game_scene_init_FD_block_animation(hit_side_obj_char,hurt_side_obj_char)
         elseif hurt_side_obj_char["height"] == "crouch" then
             hurt_side_obj_char["FD_block_state_cache"] = true
             hurt_side_obj_char["FD_block_height_cache"] = hurt_side_obj_char["height"]
             hurt_side_obj_char["character_animation"] = hit_side_obj_char["crouch_block_animation"]
-            common_game_scene_set_FD_block_animation(hit_side_obj_char,hurt_side_obj_char)
+            common_game_scene_init_FD_block_animation(hit_side_obj_char,hurt_side_obj_char)
         elseif hurt_side_obj_char["height"] == "air" then
             hurt_side_obj_char["FD_block_state_cache"] = false
             hurt_side_obj_char["FD_block_height_cache"] = "none"
@@ -577,50 +584,6 @@ function common_game_scene_strike_hurt_function_common_block(
         hit_side_obj_char["hurt_block_VFX_insert_function"](hurt_side_obj_char)
     end
 end
-function common_game_scene_strike_hurt_function_GP_hurt(
-    hit_side_obj_char,hurt_side_obj_char,obj_stage_main,obj_camera
-)
-    -- state
-    hurt_side_obj_char["state_cache"] = hurt_side_obj_char["state"]
-    hurt_side_obj_char["state"] = "hurtstop"
-    -- hit_hurt_blockstop_countdown
-    hurt_side_obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
-    hurt_side_obj_char["last_hitstop_frame"] = 0
-    -- camera_shake
-    table.insert(
-        obj_stage_main["camera_active_application_table"],
-        function()
-            anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
-            anim_stage_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
-            init_point_linear_anim_without(
-                obj_camera,anim_stage_point_linear_game_scene_camera_shake_x
-            )
-            init_point_linear_anim_without(
-                obj_camera,anim_stage_point_linear_game_scene_camera_shake_y
-            )
-            obj_camera["state"] = "active"
-        end
-    )
-    -- character_shake
-    hurt_side_obj_char["hurtstop_wiggle_x_animation"] =
-    common_game_scene_create_hurtstop_wiggle_animation(
-        hurt_side_obj_char["hit_hurt_blockstop_countdown"] - 1,"hurtstop_wiggle_x",15
-    )
-    hurt_side_obj_char["hurtstop_wiggle_y_animation"] =
-    common_game_scene_create_hurtstop_wiggle_animation(
-        hurt_side_obj_char["hit_hurt_blockstop_countdown"] - 1,"hurtstop_wiggle_y",7
-    )
-    init_point_linear_anim_with(
-        hurt_side_obj_char,hurt_side_obj_char["hurtstop_wiggle_x_animation"]
-    )
-    init_point_linear_anim_with(
-        hurt_side_obj_char,hurt_side_obj_char["hurtstop_wiggle_y_animation"]
-    )
-    hurt_side_obj_char["hurtstop_wiggle_current_x"] = (hurt_side_obj_char["hurtstop_wiggle_x"]*(math.random() - 0.5)*2)
-    hurt_side_obj_char["hurtstop_wiggle_current_y"] = (hurt_side_obj_char["hurtstop_wiggle_y"]*(math.random() - 0.5)*2)
-    -- insert_GP_VFX
-    insert_VFX_game_scene_char_GP(hurt_side_obj_char)
-end
 function common_game_scene_strike_hurt_function_common_hurt(
     hit_side_obj_char,hurt_side_obj_char,obj_stage_main,obj_camera
 )
@@ -636,7 +599,7 @@ function common_game_scene_strike_hurt_function_common_hurt(
         hit_side_obj_char["strike_counter_ver_function"](hit_side_obj_char,hurt_side_obj_char)
     else
     -- nil_camera_enclose
-        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_nil_load_camera_enclose_anim()
+        hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_nil()
     end
     -- insert_camera_shake_enclose
     if not hit_side_obj_char["camera_enclosing_anim"]["nil_mark"] then
@@ -708,6 +671,50 @@ function common_game_scene_strike_hurt_function_common_hurt(
         hurt_side_obj_char,hurt_side_obj_char["character_animation"]
     )
 end
+function common_game_scene_strike_hurt_function_common_armor(
+    hit_side_obj_char,hurt_side_obj_char,obj_stage_main,obj_camera
+)
+    -- state
+    hurt_side_obj_char["state_cache"] = hurt_side_obj_char["state"]
+    hurt_side_obj_char["state"] = "hurtstop"
+    -- hit_hurt_blockstop_countdown
+    hurt_side_obj_char["hit_hurt_blockstop_countdown"] = hit_side_obj_char["hit_hurt_blockstop_countdown"]
+    hurt_side_obj_char["last_hitstop_frame"] = 0
+    -- camera_shake
+    table.insert(
+        obj_stage_main["camera_active_application_table"],
+        function()
+            anim_stage_point_linear_game_scene_camera_shake_x = hit_side_obj_char["camera_x_shake_anim"]
+            anim_stage_point_linear_game_scene_camera_shake_y = hit_side_obj_char["camera_y_shake_anim"]
+            init_point_linear_anim_without(
+                obj_camera,anim_stage_point_linear_game_scene_camera_shake_x
+            )
+            init_point_linear_anim_without(
+                obj_camera,anim_stage_point_linear_game_scene_camera_shake_y
+            )
+            obj_camera["state"] = "active"
+        end
+    )
+    -- character_shake
+    hurt_side_obj_char["hurtstop_wiggle_x_animation"] =
+    common_game_scene_create_hurtstop_wiggle_animation(
+        hurt_side_obj_char["hit_hurt_blockstop_countdown"] - 1,"hurtstop_wiggle_x",15
+    )
+    hurt_side_obj_char["hurtstop_wiggle_y_animation"] =
+    common_game_scene_create_hurtstop_wiggle_animation(
+        hurt_side_obj_char["hit_hurt_blockstop_countdown"] - 1,"hurtstop_wiggle_y",7
+    )
+    init_point_linear_anim_with(
+        hurt_side_obj_char,hurt_side_obj_char["hurtstop_wiggle_x_animation"]
+    )
+    init_point_linear_anim_with(
+        hurt_side_obj_char,hurt_side_obj_char["hurtstop_wiggle_y_animation"]
+    )
+    hurt_side_obj_char["hurtstop_wiggle_current_x"] = (hurt_side_obj_char["hurtstop_wiggle_x"]*(math.random() - 0.5)*2)
+    hurt_side_obj_char["hurtstop_wiggle_current_y"] = (hurt_side_obj_char["hurtstop_wiggle_y"]*(math.random() - 0.5)*2)
+    -- insert_GP_VFX
+    insert_VFX_game_scene_char_armor(hurt_side_obj_char)
+end
 -- projectile
 function common_game_scene_projectile_hit_function(hit_side_obj_char,hurt_side_obj_char,obj_projectile)
     -- state
@@ -717,7 +724,7 @@ function common_game_scene_projectile_hit_function(hit_side_obj_char,hurt_side_o
     -- enemy_friend_interaction
     obj_projectile["hit_active"] = false
     -- block_test
-    local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
+    local block_bool = common_game_scene_test_block(obj_projectile,hurt_side_obj_char)
     -- counter
     if hurt_side_obj_char["hurt_state"] == "counter" then -- idle_unblock_punish_counter_GP_parry
         obj_projectile["hit_damage"] = obj_projectile["hit_damage"]*1.1
@@ -749,7 +756,7 @@ function common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_
     -- state
     hurt_side_obj_char["physics_lock"] = true
     -- block_test
-    local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
+    local block_bool = common_game_scene_test_block(obj_projectile,hurt_side_obj_char)
     if hurt_side_obj_char["height"] ~= "air" and block_bool then
         if common_game_scene_check_crouch_direction(hurt_side_obj_char) then
             hurt_side_obj_char["height"] = "crouch"
@@ -767,7 +774,7 @@ function common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,obj_stage_main,obj_camera
         )
     elseif hurt_side_obj_char["hurt_state"] == "GP" then
-        common_game_scene_projectile_hurt_function_common_GP_hurt(
+        common_game_scene_projectile_hurt_function_common_armor(
             hit_side_obj_char,hurt_side_obj_char,obj_projectile,obj_stage_main,obj_camera
         )
     elseif hurt_side_obj_char["hurt_state"] == "parry" then
@@ -783,9 +790,14 @@ function common_game_scene_projectile_hurt_function(hit_side_obj_char,hurt_side_
         )
     end
     -- wallbreak_test_and_apply
-    common_game_scene_test_and_apply_wallbreak(
-        hit_side_obj_char,hurt_side_obj_char,wallhurt_wallstick_on_side_cache
+    local wallbreak_side = common_game_scene_test_wallbreak(
+        hurt_side_obj_char,wallhurt_wallstick_on_side_cache
     )
+    if wallbreak_side ~= 0 then
+        common_game_scene_apply_wallbreak(
+            hit_side_obj_char,hurt_side_obj_char,wallbreak_side
+        )
+    end
 end
 function common_game_scene_projectile_hurt_function_common_block(
     hit_side_obj_char,hurt_side_obj_char,obj_projectile,obj_stage_main,obj_camera
@@ -844,12 +856,12 @@ function common_game_scene_projectile_hurt_function_common_block(
             hurt_side_obj_char["FD_block_state_cache"] = true
             hurt_side_obj_char["FD_block_height_cache"] = hurt_side_obj_char["height"]
             hurt_side_obj_char["character_animation"] = obj_projectile["stand_block_animation"]
-            common_game_scene_set_FD_block_animation(obj_projectile,hurt_side_obj_char)
+            common_game_scene_init_FD_block_animation(obj_projectile,hurt_side_obj_char)
         elseif hurt_side_obj_char["height"] == "crouch" then
             hurt_side_obj_char["FD_block_state_cache"] = true
             hurt_side_obj_char["FD_block_height_cache"] = hurt_side_obj_char["height"]
             hurt_side_obj_char["character_animation"] = obj_projectile["crouch_block_animation"]
-            common_game_scene_set_FD_block_animation(obj_projectile,hurt_side_obj_char)
+            common_game_scene_init_FD_block_animation(obj_projectile,hurt_side_obj_char)
         elseif hurt_side_obj_char["height"] == "air" then
             hurt_side_obj_char["FD_block_state_cache"] = false
             hurt_side_obj_char["FD_block_height_cache"] = "none"
@@ -875,52 +887,6 @@ function common_game_scene_projectile_hurt_function_common_block(
     else
         obj_projectile["hurt_block_VFX_insert_function"](hurt_side_obj_char)
     end
-end
-function common_game_scene_projectile_hurt_function_common_GP_hurt(
-    hit_side_obj_char,hurt_side_obj_char,obj_projectile,obj_stage_main,obj_camera
-)
-    -- state
-    hurt_side_obj_char["state_cache"] = hurt_side_obj_char["state"]
-    hurt_side_obj_char["state"] = "hurtstop"
-    -- hit_hurt_blockstop_countdown
-    hurt_side_obj_char["hit_hurt_blockstop_countdown"] = obj_projectile["hit_hurt_blockstop_countdown"]
-    hurt_side_obj_char["last_hitstop_frame"] = 0
-    -- camera_shake
-    table.insert(
-        obj_stage_main["camera_active_application_table"],
-        function()
-            anim_stage_point_linear_game_scene_camera_shake_x = obj_projectile["camera_x_shake_anim"]
-            anim_stage_point_linear_game_scene_camera_shake_y = obj_projectile["camera_y_shake_anim"]
-            init_point_linear_anim_without(
-                obj_camera,anim_stage_point_linear_game_scene_camera_shake_x
-            )
-            init_point_linear_anim_without(
-                obj_camera,anim_stage_point_linear_game_scene_camera_shake_y
-            )
-            obj_camera["state"] = "active"
-        end
-    )
-    -- character_shake
-    hurt_side_obj_char["hurtstop_wiggle_x_animation"] =
-    common_game_scene_create_hurtstop_wiggle_animation(
-        hurt_side_obj_char["hit_hurt_blockstop_countdown"] - 1,"hurtstop_wiggle_x",15
-    )
-    hurt_side_obj_char["hurtstop_wiggle_y_animation"] =
-    common_game_scene_create_hurtstop_wiggle_animation(
-        hurt_side_obj_char["hit_hurt_blockstop_countdown"] - 1,"hurtstop_wiggle_y",7
-    )
-    init_point_linear_anim_with(
-        hurt_side_obj_char,hurt_side_obj_char["hurtstop_wiggle_x_animation"]
-    )
-    init_point_linear_anim_with(
-        hurt_side_obj_char,hurt_side_obj_char["hurtstop_wiggle_y_animation"]
-    )
-    hurt_side_obj_char["hurtstop_wiggle_current_x"] =
-    (hurt_side_obj_char["hurtstop_wiggle_x"]*(math.random() - 0.5)*200)
-    hurt_side_obj_char["hurtstop_wiggle_current_y"] =
-    (hurt_side_obj_char["hurtstop_wiggle_y"]*(math.random() - 0.5)*200)
-    -- insert_GP_VFX
-    insert_VFX_game_scene_char_GP(hurt_side_obj_char)
 end
 function common_game_scene_projectile_hurt_function_common_hurt(
     hit_side_obj_char,hurt_side_obj_char,obj_projectile,obj_stage_main,obj_camera
@@ -1006,6 +972,52 @@ function common_game_scene_projectile_hurt_function_common_hurt(
         hurt_side_obj_char,hurt_side_obj_char["character_animation"]
     )
 end
+function common_game_scene_projectile_hurt_function_common_armor(
+    hit_side_obj_char,hurt_side_obj_char,obj_projectile,obj_stage_main,obj_camera
+)
+    -- state
+    hurt_side_obj_char["state_cache"] = hurt_side_obj_char["state"]
+    hurt_side_obj_char["state"] = "hurtstop"
+    -- hit_hurt_blockstop_countdown
+    hurt_side_obj_char["hit_hurt_blockstop_countdown"] = obj_projectile["hit_hurt_blockstop_countdown"]
+    hurt_side_obj_char["last_hitstop_frame"] = 0
+    -- camera_shake
+    table.insert(
+        obj_stage_main["camera_active_application_table"],
+        function()
+            anim_stage_point_linear_game_scene_camera_shake_x = obj_projectile["camera_x_shake_anim"]
+            anim_stage_point_linear_game_scene_camera_shake_y = obj_projectile["camera_y_shake_anim"]
+            init_point_linear_anim_without(
+                obj_camera,anim_stage_point_linear_game_scene_camera_shake_x
+            )
+            init_point_linear_anim_without(
+                obj_camera,anim_stage_point_linear_game_scene_camera_shake_y
+            )
+            obj_camera["state"] = "active"
+        end
+    )
+    -- character_shake
+    hurt_side_obj_char["hurtstop_wiggle_x_animation"] =
+    common_game_scene_create_hurtstop_wiggle_animation(
+        hurt_side_obj_char["hit_hurt_blockstop_countdown"] - 1,"hurtstop_wiggle_x",15
+    )
+    hurt_side_obj_char["hurtstop_wiggle_y_animation"] =
+    common_game_scene_create_hurtstop_wiggle_animation(
+        hurt_side_obj_char["hit_hurt_blockstop_countdown"] - 1,"hurtstop_wiggle_y",7
+    )
+    init_point_linear_anim_with(
+        hurt_side_obj_char,hurt_side_obj_char["hurtstop_wiggle_x_animation"]
+    )
+    init_point_linear_anim_with(
+        hurt_side_obj_char,hurt_side_obj_char["hurtstop_wiggle_y_animation"]
+    )
+    hurt_side_obj_char["hurtstop_wiggle_current_x"] =
+    (hurt_side_obj_char["hurtstop_wiggle_x"]*(math.random() - 0.5)*200)
+    hurt_side_obj_char["hurtstop_wiggle_current_y"] =
+    (hurt_side_obj_char["hurtstop_wiggle_y"]*(math.random() - 0.5)*200)
+    -- insert_GP_VFX
+    insert_VFX_game_scene_char_armor(hurt_side_obj_char)
+end
 function common_game_scene_projectile_RC_red_yellow_hurt_function(
     hit_side_obj_char,hurt_side_obj_char,obj_projectile
 )
@@ -1023,7 +1035,7 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function(
     -- state
     hurt_side_obj_char["physics_lock"] = false
     -- block_test
-    local block_bool = common_game_scene_block_test(obj_projectile,hurt_side_obj_char)
+    local block_bool = common_game_scene_test_block(obj_projectile,hurt_side_obj_char)
     if hurt_side_obj_char["height"] ~= "air" and block_bool then
         if common_game_scene_check_crouch_direction(hurt_side_obj_char) then
             hurt_side_obj_char["height"] = "crouch"
@@ -1046,9 +1058,14 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function(
         )
     end
     -- wallbreak_test_and_apply
-    common_game_scene_test_and_apply_wallbreak(
-        hit_side_obj_char,hurt_side_obj_char,wallhurt_wallstick_on_side_cache
+    local wallbreak_side = common_game_scene_test_wallbreak(
+        hurt_side_obj_char,wallhurt_wallstick_on_side_cache
     )
+    if wallbreak_side ~= 0 then
+        common_game_scene_apply_wallbreak(
+            hit_side_obj_char,hurt_side_obj_char,wallbreak_side
+        )
+    end
 end
 function common_game_scene_projectile_RC_red_yellow_hurt_function_common_block(
     hit_side_obj_char,hurt_side_obj_char,obj_projectile,obj_stage_main,obj_camera
@@ -1092,12 +1109,12 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function_common_block(
             hurt_side_obj_char["FD_block_state_cache"] = true
             hurt_side_obj_char["FD_block_height_cache"] = hurt_side_obj_char["height"]
             hurt_side_obj_char["character_animation"] = obj_projectile["stand_block_animation"]
-            common_game_scene_set_FD_block_animation(obj_projectile,hurt_side_obj_char)
+            common_game_scene_init_FD_block_animation(obj_projectile,hurt_side_obj_char)
         elseif hurt_side_obj_char["height"] == "crouch" then
             hurt_side_obj_char["FD_block_state_cache"] = true
             hurt_side_obj_char["FD_block_height_cache"] = hurt_side_obj_char["height"]
             hurt_side_obj_char["character_animation"] = obj_projectile["crouch_block_animation"]
-            common_game_scene_set_FD_block_animation(obj_projectile,hurt_side_obj_char)
+            common_game_scene_init_FD_block_animation(obj_projectile,hurt_side_obj_char)
         elseif hurt_side_obj_char["height"] == "air" then
             hurt_side_obj_char["FD_block_state_cache"] = false
             hurt_side_obj_char["FD_block_height_cache"] = "none"
@@ -1142,7 +1159,7 @@ function common_game_scene_projectile_RC_red_yellow_hurt_function_common_hurt(
     -- insert_camera_shake_enclose
     obj_projectile["camera_x_shake_anim"],obj_projectile["camera_y_shake_anim"] =
     common_game_scene_hit_load_camera_shake_anim(0.35,30)
-    obj_projectile["camera_enclosing_anim"] = common_game_scene_red_RC_hit_load_camera_enclose_anim()
+    obj_projectile["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_red_RC_hit()
     obj_projectile["enclose_position_offset"] = {
         0,
         37.5,
@@ -1323,7 +1340,7 @@ function common_game_scene_counter_ver3(hit_side_obj_char,hurt_side_obj_char)
     hit_side_obj_char["hit_hurt_blockstop_countdown"] = 31
     hit_side_obj_char["hit_hurt_block_slowdown_countdown"] = 0
     -- camera
-    hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_counter_ver3_load_camera_enclose_anim()
+    hit_side_obj_char["camera_enclosing_anim"] = common_game_scene_load_camera_enclose_anim_counter_ver3()
     hit_side_obj_char["enclose_position_offset"] = {
         (hit_side_obj_char["x"] + hurt_side_obj_char["x"])/2 - obj_camera["3d_pos_x"],
         80,
@@ -1984,7 +2001,7 @@ function common_game_scene_wallstick_load_camera_shake_anim(multiplyer)
     return anim_x,anim_y
 end
 -- enclose_anim
-function common_game_scene_nil_load_camera_enclose_anim()
+function common_game_scene_load_camera_enclose_anim_nil()
     local obj_camera = obj_stage_game_scene_camera
     local anim = {}
     anim[0] = {obj_camera["enclose_percentage"],5}
@@ -1998,7 +2015,25 @@ function common_game_scene_nil_load_camera_enclose_anim()
     anim["nil_mark"] = true
     return anim
 end
-function common_game_scene_counter_ver3_load_camera_enclose_anim()
+function common_game_scene_load_camera_enclose_anim_red_RC_hit()
+    local anim = {}
+    local obj_camera = obj_stage_game_scene_camera
+    anim[0] = {obj_camera["enclose_percentage"],2}
+    anim[2] = {obj_camera["enclose_percentage"]*0.2 + 0.8,5}
+    anim[5] = {obj_camera["enclose_percentage"]*0.05 + 0.95,10}
+    anim[10] = {obj_camera["enclose_percentage"]*0.0125 + 0.9875,15}
+    anim[15] = {1.00,20}
+    anim[20] = {0.43,25}
+    anim[25] = {0.17,30}
+    anim[30] = {0.00,30}
+    anim["prop"] = "enclose_percentage"
+    anim["length"] = 30
+    anim["loop"] = false
+    anim["fix_type"] = true
+    anim["nil_mark"] = false
+    return anim
+end
+function common_game_scene_load_camera_enclose_anim_counter_ver3()
     local anim = {}
     local obj_camera = obj_stage_game_scene_camera
     anim[0] = {obj_camera["enclose_percentage"],5}
@@ -2015,24 +2050,6 @@ function common_game_scene_counter_ver3_load_camera_enclose_anim()
     anim[90] = {0.00,90}
     anim["prop"] = "enclose_percentage"
     anim["length"] = 90
-    anim["loop"] = false
-    anim["fix_type"] = true
-    anim["nil_mark"] = false
-    return anim
-end
-function common_game_scene_red_RC_hit_load_camera_enclose_anim()
-    local anim = {}
-    local obj_camera = obj_stage_game_scene_camera
-    anim[0] = {obj_camera["enclose_percentage"],2}
-    anim[2] = {obj_camera["enclose_percentage"]*0.2 + 0.8,5}
-    anim[5] = {obj_camera["enclose_percentage"]*0.05 + 0.95,10}
-    anim[10] = {obj_camera["enclose_percentage"]*0.0125 + 0.9875,15}
-    anim[15] = {1.00,20}
-    anim[20] = {0.43,25}
-    anim[25] = {0.17,30}
-    anim[30] = {0.00,30}
-    anim["prop"] = "enclose_percentage"
-    anim["length"] = 30
     anim["loop"] = false
     anim["fix_type"] = true
     anim["nil_mark"] = false
