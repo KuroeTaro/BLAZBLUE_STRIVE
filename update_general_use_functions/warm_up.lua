@@ -85,6 +85,35 @@ local function warm_up_draw(drawable_kind)
         love.graphics.draw(warm_up_mesh)
     end
 end
+function warm_up_record_begin(step_name)
+    -- order_load 的一步开始:之后用 warm_up_record_* 建的东西都登记到这一步
+    warm_up_step_name = step_name
+    warm_up_texture_list = {}
+    warm_up_shader_list = {}
+    if DEBUG_ORDER_LOAD_TIMING then
+        warm_up_texture_count_before = warm_up_get_texture_count()
+    end
+end
+function warm_up_record_end()
+    -- order_load 的一步结束:这一步登记的东西排进暖机队列(纹理一项,shader 各一项)
+    if DEBUG_ORDER_LOAD_TIMING then
+        local unrecorded = warm_up_get_texture_count() - warm_up_texture_count_before - #warm_up_texture_list
+        if unrecorded > 0 then
+            print(string.format(
+                "[warm_up] 警告 %s 有 %d 张纹理不是用 warm_up_record_image / warm_up_record_canvas 建的,不会暖机",
+                warm_up_step_name,unrecorded
+            ))
+        end
+    end
+    if #warm_up_texture_list > 0 then
+        WARM_UP_QUEUE[#WARM_UP_QUEUE + 1] = {"texture",warm_up_step_name,warm_up_texture_list}
+    end
+    for k = 1,#warm_up_shader_list do
+        WARM_UP_QUEUE[#WARM_UP_QUEUE + 1] = warm_up_shader_list[k]
+    end
+    warm_up_texture_list = nil
+    warm_up_shader_list = nil
+end
 function warm_up_record_image(...)
     -- 建 Image 并登记进这一步的暖机(只在 order_load 里调用,参数和 love.graphics.newImage 一样)
     local texture = love.graphics.newImage(...)
